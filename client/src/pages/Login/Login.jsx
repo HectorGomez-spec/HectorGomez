@@ -1,11 +1,21 @@
 import React from 'react';
 import image from "../../Img/logo.svg"
-const Login = () => {
-    
+import {useForm} from 'react-hook-form';
+import axios from '../../api/axios';
+import { useAppContext } from '../../context/AppContext';
 
+const Login = () => {
+    const {register, handleSubmit} = useForm();
+    const {login} = useAppContext();
     return (
         <div style={styles.body}>
-            <div style={styles.loginContainer}>
+            <form style={styles.loginContainer} onSubmit={handleSubmit(async(values)=>{
+                try {
+                    login(values);
+                } catch (error) {
+                    console.log(error);
+                }
+            })}>
                 <div style={styles.loginBox}>
                     <img 
                         src={image}
@@ -19,7 +29,7 @@ const Login = () => {
                         <input 
                             type="text" 
                             id="username" 
-                            name="username" 
+                            {...register('Correo')}
                             required 
                             placeholder="👤 Nombre de Usuario"
                             style={styles.input}
@@ -30,14 +40,14 @@ const Login = () => {
                         <input 
                             type="password" 
                             id="password" 
-                            name="password" 
+                            {...register('User_Password')}
                             required 
                             placeholder="🔒 Contraseña"
                             style={styles.input}
                         />
                     </div>
                     <button 
-                        type="button" 
+                        type="submit" 
                         style={styles.submit} 
                         
                     >
@@ -50,7 +60,7 @@ const Login = () => {
                         <p>¿No tienes una cuenta? <a href="/Pages/registro.html">Regístrate aquí</a></p>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };

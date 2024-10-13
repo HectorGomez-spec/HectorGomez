@@ -12,7 +12,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookie());
 
-app.get('/api',auth);
+app.use('/api',auth);
 
 
 app.listen(3000);

@@ -29,19 +29,19 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { Correo, UserPassword } = req.body;
+        const { Correo, User_Password } = req.body;
         const [user] = await pool.query('select * from Usuario where Correo = ?', [Correo]);
 
         if (user.length === 0) return res.status(400).json({ message: "Usuario o contraseña incorrecta" })
 
-        const validPassword = await matchPassword(UserPassword, user[0].userPassword);
+        const validPassword = await matchPassword(User_Password, user[0].User_Password);
         if (!validPassword) return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
 
         const token = await createAccessToken({ Id: user[0].Id })
-        const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
+        // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
 
         res.cookie('token', token)
-        res.json([user, permisos])
+        res.json([user])
 
 
     } catch (error) {
