@@ -63,7 +63,7 @@ export const ContextProvider = ({ children }) => {
       setIsAuthenticated(true);
       navigate("/perfil");
     } catch (error) {
-      toast.error(error.response.data.message,{style:{backgroundColor:'red', border:"none",color:"#fff"}});
+      toast.error(error.response.data.message,{style:{backgroundColor:'#F08080', border:"none",color:"#fff"}});
       console.log(error);
     }
   };
