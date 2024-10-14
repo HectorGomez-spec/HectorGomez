@@ -6,15 +6,15 @@ import { SECRET_KEY } from '../../config.js'
 
 export const register = async (req, res) => {
     try {
-        const { Nombres, UserPassword, Correo, IdRol, Apellidos } = req.body;
+        const { Nombre,Apellido, User_Password, Correo, IdRol } = req.body;
         const newUser = {
-            Nombres,
-            UserPassword,
+            Nombre,
+            User_Password,
             Correo,
-            IdRol,
-            Apellidos
+            Apellido
         }
-        newUser.UserPassword = await cryptPassword(UserPassword);
+        console.log(User_Password);
+        newUser.User_Password = await cryptPassword(User_Password);
         await pool.query('insert into Usuario set ?', [newUser])
 
         const token = await createAccessToken({ Correo })
@@ -29,12 +29,13 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { Correo, User_Password } = req.body;
-        const [user] = await pool.query('select * from Usuario where Correo = ?', [Correo]);
+        const { CORREO, USER_PASSWORD } = req.body;
+        const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
+        console.log(user);  
 
         if (user.length === 0) return res.status(400).json({ message: "Usuario o contraseña incorrecta" })
 
-        const validPassword = await matchPassword(User_Password, user[0].User_Password);
+        const validPassword = await matchPassword(USER_PASSWORD, user[0].USER_PASSWORD);
         if (!validPassword) return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
 
         const token = await createAccessToken({ Id: user[0].Id })
@@ -42,8 +43,6 @@ export const login = async (req, res) => {
 
         res.cookie('token', token)
         res.json([user])
-
-
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: error.message })

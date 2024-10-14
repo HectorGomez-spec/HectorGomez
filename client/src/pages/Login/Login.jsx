@@ -28,8 +28,7 @@ const Login = () => {
                         <label htmlFor="username">Usuario</label>
                         <input 
                             type="text" 
-                            id="username" 
-                            {...register('Correo')}
+                            {...register('CORREO')}
                             required 
                             placeholder="👤 Nombre de Usuario"
                             style={styles.input}
@@ -39,8 +38,7 @@ const Login = () => {
                         <label htmlFor="password">Contraseña</label>
                         <input 
                             type="password" 
-                            id="password" 
-                            {...register('User_Password')}
+                            {...register('USER_PASSWORD')}
                             required 
                             placeholder="🔒 Contraseña"
                             style={styles.input}

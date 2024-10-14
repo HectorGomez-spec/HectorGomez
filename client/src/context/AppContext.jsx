@@ -2,6 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import Cookie from "js-cookie";
 import axios from '../api/axios';
 import { useNavigate } from "react-router-dom";
+import {toast} from 'sonner'
 
 export const AppContext = createContext();
 
@@ -60,8 +61,9 @@ export const ContextProvider = ({ children }) => {
       console.log(res.data);
       setUser(res.data);
       setIsAuthenticated(true);
-      navigate("/Profile");
+      navigate("/perfil");
     } catch (error) {
+      toast.error(error.response.data.message,{style:{backgroundColor:'red', border:"none",color:"#fff"}});
       console.log(error);
     }
   };
