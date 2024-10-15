@@ -13,7 +13,6 @@ export const register = async (req, res) => {
             Correo,
             Apellido
         }
-        console.log(User_Password);
         newUser.User_Password = await cryptPassword(User_Password);
         await pool.query('insert into Usuario set ?', [newUser])
 
@@ -64,9 +63,9 @@ export const verifyToken = async(req, res) => {
     jwt.verify(token, SECRET_KEY, async(err, decoded)=>{ 
         if (err) return res.status(401).json({message:"No estas autorizado"});
         const [user] = await pool.query('select * from Usuario where Id = ?',[decoded.payload.Id]);
-        if (!user) return res.json(400).json({message:"Usuario no encontrado"});
-        const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
-        res.json([user, permisos]);
+        // if (!user) return res.json(400).json({message:"Usuario no encontrado"});
+        // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
+        res.json([user]);
      })
 }
 
