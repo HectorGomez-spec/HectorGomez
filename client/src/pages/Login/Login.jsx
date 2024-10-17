@@ -3,6 +3,7 @@ import image from "../../Img/logo.svg"
 import {useForm} from 'react-hook-form';
 import axios from '../../api/axios';
 import { useAppContext } from '../../context/AppContext';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const {register, handleSubmit} = useForm();
@@ -22,7 +23,7 @@ const Login = () => {
                         alt="Honduras Medical Center Logo" 
                         style={styles.logo} 
                     />
-                    <h1 style={styles.title}>Vigilancia Epidemiológica <br /> <p>Y</p> Control de Lavado de Manos</h1>
+                    <h1 style={styles.title}>Vigilancia Epidemiológica y Control de Lavado de Manos</h1>
                     <h1 style={styles.subtitle}>Inicio de Sesión</h1>
                     <div style={styles.inputGroup}>
                         <label htmlFor="username">Usuario</label>
@@ -52,10 +53,10 @@ const Login = () => {
                         Iniciar Sesión
                     </button>
                     <div style={styles.forgotPassword}>
-                        <p><a href="/Pages/recuperarcontrasena.html">¿Olvidaste tu contraseña?</a></p>
+                        <p><Link to="/recuperar-contraseña">¿Olvidaste tu contraseña?</Link></p>
                     </div>
                     <div style={styles.signupLink}>
-                        <p>¿No tienes una cuenta? <a href="/Pages/registro.html">Regístrate aquí</a></p>
+                        <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link></p>
                     </div>
                 </div>
             </form>
@@ -76,7 +77,7 @@ const styles = {
     },
     loginContainer: {
         backgroundColor: '#e0f2f1',
-        padding: '90px',
+        padding: '40px',
         borderRadius: '10px',
         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
         textAlign: 'center',
@@ -88,12 +89,12 @@ const styles = {
     title: {
         color: '#003366',
         marginBottom: '20px',
-        fontSize: '20px',
+        fontSize: '16px',
     },
     subtitle: {
         color: '#003366',
         marginBottom: '20px',
-        fontSize: '20px',
+        fontSize: '12px',
     },
     logo: {
         width: '250px',

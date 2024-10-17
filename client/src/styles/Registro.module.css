@@ -1,0 +1,117 @@
+.register_container {
+    background-color: #e0f2f1; /* Azul claro */
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+    margin: 20px auto;
+}
+
+.register_box h1 {
+    color: #003366; /* Azul oscuro */
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.logo_container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 250px;
+    height: auto;
+}
+
+.register_form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input_group {
+    margin-bottom: 15px;
+    width:49.5%;
+    text-align: left;
+}
+
+.input_group label {
+    display: block;
+    font-size: 14px;
+    color: #003366; /* Azul oscuro */
+}
+
+.input_group input {
+    width: 95%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn_registro {
+    width: 100%;
+    padding: 10px;
+    background-color: #005f99; /* Azul intermedio */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.btn_registro:hover {
+    background-color: #ff4c4c; /* Rojo de alerta */
+}
+
+.social_auth {
+    margin-top: 20px;
+}
+
+.social_auth p {
+    font-size: 14px;
+    color: #003366; /* Azul oscuro */
+}
+
+.social_auth_btn {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social_auth_btn img {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.social_auth-btn .button_text {
+    color: #003366; /* Azul oscuro */
+    font-size: 14px;
+}
+
+.login_link p {
+    font-size: 14px;
+    color: #003366; /* Azul oscuro */
+    margin-top: 20px;
+}
+
+.login_link p a {
+    text-decoration: none;
+    color: #005f99; /* Azul intermedio */
+}
+
+.login_link p a:hover {
+    color: #ff4c4c; /* Rojo de alerta */
+}

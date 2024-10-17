@@ -6,23 +6,29 @@ import { SECRET_KEY } from '../../config.js'
 
 export const register = async (req, res) => {
     try {
-        const { Nombre,Apellido, User_Password, Correo, IdRol } = req.body;
+        const { Nombre, Apellido, User_Password, Correo, Telefono, Direccion, Fecha_Nacimiento } = req.body;
         const newUser = {
             Nombre,
             User_Password,
             Correo,
-            Apellido
+            Apellido,
+            Telefono,
+            Direccion,
+            Fecha_Nacimiento,
+            Creado_Por: 'Auto Registro',
+            Id_Estado_Usuario: 2,
+            Fecha_Creacion: new Date()
         }
         newUser.User_Password = await cryptPassword(User_Password);
+        const [resp] = await pool.query('select * from Usuario where Correo = ?', [Correo]);
+        if (resp.length > 0) return res.status(400).json({ message: "El correo ya existe" })
+
         await pool.query('insert into Usuario set ?', [newUser])
-
-        const token = await createAccessToken({ Correo })
-
-        res.cookie('token', token)
-        res.json(newUser)
+        res.json({ message: "Usuario registrado" })
 
     } catch (error) {
         res.status(500).json({ message: error.message })
+        console.log(error)
     }
 }
 
@@ -30,7 +36,7 @@ export const login = async (req, res) => {
     try {
         const { CORREO, USER_PASSWORD } = req.body;
         const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
-        console.log(user);  
+        console.log(user);
 
         if (user.length === 0) return res.status(400).json({ message: "Usuario o contraseña incorrecta" })
 
@@ -56,20 +62,20 @@ export const logOut = (req, res) => {
     return res.sendStatus(200);
 }
 
-export const verifyToken = async(req, res) => {
+export const verifyToken = async (req, res) => {
     const { token } = req.cookies;
-    if(!token) return res.status(401).json({message:"No estas autorizado"});
+    if (!token) return res.status(401).json({ message: "No estas autorizado" });
 
-    jwt.verify(token, SECRET_KEY, async(err, decoded)=>{ 
-        if (err) return res.status(401).json({message:"No estas autorizado"});
-        const [user] = await pool.query('select * from Usuario where Id = ?',[decoded.payload.Id]);
+    jwt.verify(token, SECRET_KEY, async (err, decoded) => {
+        if (err) return res.status(401).json({ message: "No estas autorizado" });
+        const [user] = await pool.query('select * from Usuario where Id = ?', [decoded.payload.Id]);
         // if (!user) return res.json(400).json({message:"Usuario no encontrado"});
         // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
         res.json([user]);
-     })
+    })
 }
 
-export const actualizarPermisos = async(req, res) => {
+export const actualizarPermisos = async (req, res) => {
     const { Id } = req.params;
     try {
 

@@ -1,10 +1,8 @@
 import React from 'react'
 import { useAppContext } from '../../context/AppContext'
 import '../../styles/perfil.css'
-import usuarioLogo from '../../Img/user.svg'
 import alert1 from '../../Img/Alert1.png'
 import regis from '../../Img/Regis.png'
-import logo from '../../Img/logo.svg'
 import reporte1 from '../../Img/reporte1.png'
 import { useEffect } from 'react'
 
@@ -18,63 +16,6 @@ export function Perfil() {
 
     return (
       <div className="App">
-          <header>
-              <div className="logo">
-                  <img src={logo} alt="Logo" />
-                  <h1>Sistema de Vigilancia Epidemiológica Y Control de Lavado de Manos</h1>
-              </div>
-              <div className="session-info">
-                  <img src={usuarioLogo} alt="Usuario" />
-                  <span>Usuario: {user[0][0].NOMBRE}</span>
-                  <br />
-                  <a href="#" onClick={()=>{
-                      logout();
-                  }} style={{ color: '#f8f9fa' }}>Cerrar Sesión</a>
-              </div>
-          </header>
-
-          <nav id="main-nav">
-              <ul>
-                  <li><a href="/Pages/index.html">Inicio</a></li>
-                  <li className="has-submenu"><a href="#">Pacientes</a></li>
-                  <li className="has-submenu"><a href="salas.html">Salas</a></li>
-                  <li className="has-submenu"><a href="#">Gestión</a></li>
-                  <li className="has-submenu"><a href="#">Estadísticas</a></li>
-                  <li className="has-submenu"><a href="#">Seguridad</a></li>
-              </ul>
-              <div className="search-bar">
-                  <input type="text" placeholder="Buscar..." />
-                  <button>Buscar</button>
-              </div>
-          </nav>
-
-          {/* Submenús */}
-          <nav id="submenu-nav-pacientes" style={{ display: 'none' }}>
-              <ul>
-                  <li><a href="verpacientes.html">Ver Pacientes</a></li>
-                  <li><a href="registropaciente.html">Registrar Paciente</a></li>
-              </ul>
-          </nav>
-          <nav id="submenu-nav-gestión" style={{ display: 'none' }}>
-              <ul>
-                  <li><a href="control_manos.html">Control Higiene de Manos</a></li>
-                  <li><a href="vigilancia.html">Vigilancia Epidemiológica</a></li>
-              </ul>
-          </nav>
-          <nav id="submenu-nav-estadísticas" style={{ display: 'none' }}>
-              <ul>
-                  <li><a href="estadística.html">Ver Estadísticas</a></li>
-                  <li><a href="comparacion_estadística.html">Comparar Estadísticas</a></li>
-              </ul>
-          </nav>
-          <nav id="submenu-nav-seguridad" style={{ display: 'none' }}>
-              <ul>
-                  <li><a href="usuarios.html">Usuarios</a></li>
-                  <li><a href="roles.html">Roles</a></li>
-                  <li><a href="permisos.html">Permisos</a></li>
-              </ul>
-          </nav>
-
           <main>
               <h2>Bienvenido al Sistema de Vigilancia Epidemiológica</h2>
               <p style={{ textAlign: 'justify' }}>
