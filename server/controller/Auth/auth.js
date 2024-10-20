@@ -51,9 +51,7 @@ export const login = async (req, res) => {
         await pool.query('update Usuario set Token = ? where Id = ?', [token, user[0].ID]);
         enviarCorreo('Codigo de acceso', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${codigo}</strong>, tienes 2 minutos para usarlo`, CORREO);
         res.status(200).json({ IsValid: true, message: "Correo enviado" });
-        // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
-        // res.cookie('token', token)
-        // res.json([user])
+  
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: error.message })
@@ -100,15 +98,31 @@ export const verifyToken = async (req, res) => {
     })
 }
 
-export const actualizarPermisos = async (req, res) => {
-    const { Id } = req.params;
+export const recuperarContraseña = async (req, res) => {
     try {
+        const { CORREO } = req.body;
+        const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
+        if (user.length === 0) return res.status(400).json({ message: "Usuario no encontrado" });
 
-        const [user] = await pool.query('select * from Usuario where Id = ?', [Id]);
-        const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
-        console.log(permisos);
-        res.json([user, permisos]);
+        const password = generarCodigo();
+        const hashPassword = await cryptPassword(password);
+        await pool.query('update Usuario set User_Password = ? where Id = ?', [hashPassword, user[0].ID]);
+        enviarCorreo('Recuperar contraseña', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${password}</strong>`, CORREO);
+        res.status(200).json({ IsValid: true, message: "Correo enviado" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
+
+// export const actualizarPermisos = async (req, res) => {
+//     const { Id } = req.params;
+//     try {
+
+//         const [user] = await pool.query('select * from Usuario where Id = ?', [Id]);
+//         const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
+//         console.log(permisos);
+//         res.json([user, permisos]);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// }
