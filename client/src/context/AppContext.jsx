@@ -34,6 +34,7 @@ export const ContextProvider = ({ children }) => {
       }
       try {
         const res = await axios.get("/verifyToken");
+        console.log(res.data);
         if (!res.data) {
           console.log("No hay token");
           setIsAuthenticated(false);
@@ -58,7 +59,16 @@ export const ContextProvider = ({ children }) => {
   const login = async (body) => {
     try {
       const res = await axios.post(`/login`, body);
-      console.log(res.data);
+      return res.data;
+    } catch (error) {
+      toast.error(error.response.data.message,{style:{backgroundColor:'#F08080', border:"none",color:"#fff"}});
+      console.log(error);
+    }
+  };
+
+  const verifyCode = async (body) => {
+    try {
+      const res = await axios.post(`/verifyCode`, body)
       setUser(res.data);
       setIsAuthenticated(true);
       navigate("/perfil");
@@ -81,7 +91,7 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ setRows, rows, logout, login, user, loading, isAuthenticated, setUser }}>
+      value={{ setRows, rows, logout, login, user, loading, isAuthenticated, setUser, verifyCode }}>
       {children}
     </AppContext.Provider>
   );

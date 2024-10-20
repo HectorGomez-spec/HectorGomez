@@ -1,6 +1,6 @@
 import { pool } from '../../database/conexion.js'
 import { createAccessToken } from '../../lib/jwt.js'
-import { cryptPassword, matchPassword } from '../../lib/helpers.js'
+import { cryptPassword, matchPassword, generarCodigo, enviarCorreo } from '../../lib/helpers.js'
 import jwt from 'jsonwebtoken'
 import { SECRET_KEY } from '../../config.js'
 
@@ -35,21 +35,46 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { CORREO, USER_PASSWORD } = req.body;
-        const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
-        console.log(user);
 
+        //validar que exista el correo
+        const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
         if (user.length === 0) return res.status(400).json({ message: "Usuario o contraseña incorrecta" })
 
+        //si el correo existe, se valida la contraseña
         const validPassword = await matchPassword(USER_PASSWORD, user[0].USER_PASSWORD);
         if (!validPassword) return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
 
-        const token = await createAccessToken({ Id: user[0].Id })
+        //si la contraseña es correcta, se crea un token
+        const codigo = generarCodigo();
+        const token = await createAccessToken({ Id: codigo }, '2m');
+        //se actualiza el token en la base de datos
+        await pool.query('update Usuario set Token = ? where Id = ?', [token, user[0].ID]);
+        enviarCorreo('Codigo de acceso', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${codigo}</strong>, tienes 2 minutos para usarlo`, CORREO);
+        res.status(200).json({ IsValid: true, message: "Correo enviado" });
         // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
-
-        res.cookie('token', token)
-        res.json([user])
+        // res.cookie('token', token)
+        // res.json([user])
     } catch (error) {
         console.log(error)
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export const verifyCode = async (req, res) => {
+    try {
+        const { CORREO, CODIGO} = req.body;
+        // verificar que el correo exista en la base de datos 
+        const [user] = await pool.query('select * from Usuario where Correo = ?', [CORREO]);
+        if (user.length === 0) return res.status(400).json({ message: "Usuario no encontrado" });
+
+        jwt.verify(user[0].TOKEN, SECRET_KEY, async (err, decoded) => {
+            if (err) return res.status(401).json({ message: "Codigo de acceso invalido" });
+            if (decoded.payload.Id !== CODIGO) return res.status(401).json({ message: "Codigo incorrecto" });
+            const token = await createAccessToken({ Id: user[0].ID }, '1h');
+            res.cookie('token', token)
+            res.json([user]);
+        })
+    } catch (error) {
         res.status(500).json({ message: error.message })
     }
 }
@@ -69,7 +94,7 @@ export const verifyToken = async (req, res) => {
     jwt.verify(token, SECRET_KEY, async (err, decoded) => {
         if (err) return res.status(401).json({ message: "No estas autorizado" });
         const [user] = await pool.query('select * from Usuario where Id = ?', [decoded.payload.Id]);
-        // if (!user) return res.json(400).json({message:"Usuario no encontrado"});
+        if (user.length === 0) return res.status(400).json({ message: "Usuario no encontrado" });
         // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
         res.json([user]);
     })
