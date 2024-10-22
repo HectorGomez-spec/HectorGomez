@@ -59,9 +59,10 @@ export const ContextProvider = ({ children }) => {
   const login = async (body) => {
     try {
       const res = await axios.post(`/login`, body);
+      toast.success(res.data.message);
       return res.data;
     } catch (error) {
-      toast.error(error.response.data.message,{style:{backgroundColor:'#F08080', border:"none",color:"#fff"}});
+      toast.error(error.response.data.message,{style:{backgroundColor:'#bb2124', border:"none",color:"#fff"}});
       console.log(error);
     }
   };

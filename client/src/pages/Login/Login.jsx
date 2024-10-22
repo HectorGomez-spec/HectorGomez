@@ -6,7 +6,7 @@ import { useAppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,getValues } = useForm();
   const { login, verifyCode } = useAppContext();
   const [inputCodigo, setInputCodigo] = useState(false);
   const [resendEnabled, setResendEnabled] = useState(false);
@@ -25,7 +25,7 @@ const Login = () => {
     try {
       setCounter(60);
       setResendEnabled(false);
-      await login(); // Aquí puedes llamar a la función que reenvía el código
+      await login(getValues()); // Aquí puedes llamar a la función que reenvía el código
     } catch (error) {
       console.log(error);
     }
@@ -92,6 +92,7 @@ const Login = () => {
                   type="text"
                   {...register("CODIGO", { required: true })}
                   placeholder="🔒 Código de Acceso"
+                  autoFocus
                   style={styles.input2}
                 />
               </div>
@@ -105,7 +106,7 @@ const Login = () => {
 
               <button
                 type="button"
-                style={styles.resendButton}
+                style={{width :"100%", padding: "10px", backgroundColor: resendEnabled ? "#ffc107":"White", border: "none", borderRadius: "5px", cursor: resendEnabled ? "pointer":"not-allowed", marginTop: "10px", fontSize: "16px", color: resendEnabled ? "white":"gray"}}
                 onClick={handleResendCode}
                 disabled={!resendEnabled}
               >
@@ -121,11 +122,11 @@ const Login = () => {
               <Link to="/recuperar-contraseña">¿Olvidaste tu contraseña?</Link>
             </p>
           </div>
-          <div style={styles.signupLink}>
+          {/* <div style={styles.signupLink}>
             <p>
               ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </form>
     </div>
@@ -135,21 +136,19 @@ const Login = () => {
 const styles = {
   body: {
     fontFamily: "Arial, sans-serif",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#f4f4f4",
+    margin: '40px auto',
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
   },
   loginContainer: {
     backgroundColor: "#e0f2f1",
-    padding: "40px",
+    padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
     textAlign: "center",
-    width: "300px",
+    width: "350px",
   },
   loginBox: {
     textAlign: "center",
@@ -199,17 +198,6 @@ const styles = {
     cursor: "pointer",
     marginTop: "10px",
     fontSize: "16px",
-  },
-  resendButton: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#ffc107",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    marginTop: "10px",
-    fontSize: "14px",
   },
   counterText: {
     color: "#0a0a2a", // Color rojo para el texto del contador

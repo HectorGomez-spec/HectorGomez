@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import cookie from 'cookie-parser'
 import auth from './routes/auth.routes.js'
+import Usuarios from './routes/usuarios.routes.js'
+
 const app = express();
 
 app.use(cors({
@@ -13,6 +15,9 @@ app.use(express.json());
 app.use(cookie());
 
 app.use('/api',auth);
+app.use('/api',Usuarios);
+
+
 
 
 app.listen(3000);

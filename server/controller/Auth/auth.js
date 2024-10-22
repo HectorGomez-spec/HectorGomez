@@ -50,11 +50,10 @@ export const login = async (req, res) => {
         //se actualiza el token en la base de datos
         await pool.query('update Usuario set Token = ? where Id = ?', [token, user[0].ID]);
         enviarCorreo('Codigo de acceso', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${codigo}</strong>, tienes 2 minutos para usarlo`, CORREO);
-        res.status(200).json({ IsValid: true, message: "Correo enviado" });
+        res.status(200).json({ IsValid: true, message: "Te hemos enviado un correo" });
   
     } catch (error) {
-        console.log(error)
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: 'error al iniciar sesión' });
     }
 }
 
@@ -108,7 +107,7 @@ export const recuperarContraseña = async (req, res) => {
         const hashPassword = await cryptPassword(password);
         await pool.query('update Usuario set User_Password = ? where Id = ?', [hashPassword, user[0].ID]);
         enviarCorreo('Recuperar contraseña', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${password}</strong>`, CORREO);
-        res.status(200).json({ IsValid: true, message: "Correo enviado" });
+        res.status(200).json({ IsValid: true, message: "Te hemos enviado un correo" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
