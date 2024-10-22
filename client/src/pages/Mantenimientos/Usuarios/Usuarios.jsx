@@ -6,7 +6,7 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
-  { id: "NOMBRE", label: "Nombre", minWidth: 100 },
+  { id: "NOMBRE1", label: "Nombre", minWidth: 100 },
   { id: "CORREO", label: "Correo", minWidth: 100 },
   { id: "ESTADO", label: "Estado", minWidth: 100 },
   { id: "ROL", label: "Rol", minWidth: 100 },
@@ -21,7 +21,7 @@ const Usuarios = () => {
     try {
       const response = await axios.get("/getUsuarios");
       setRows(response.data);
-      console.log(response.data);
+  
     } catch (error) {
       console.log(error);
     }
@@ -39,11 +39,11 @@ const Usuarios = () => {
   const deleteRequest = async (id) => {
     try {
       let tabla = rows.filter((data) => {
-        return data.Id !== id;
+        return data.ID !== id;
       });
-      const resp =  await axios.delete(`/deleteUsuario/${id}`);
+      const resp =  await axios.delete(`/eliminarUsuario/${id}`);
       setRows(tabla);
-      toast.success(resp.data.message);
+      toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);
     }
