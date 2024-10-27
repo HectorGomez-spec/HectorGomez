@@ -67,7 +67,7 @@ export const verifyCode = async (req, res) => {
         jwt.verify(user[0].TOKEN, SECRET_KEY, async (err, decoded) => {
             if (err) return res.status(401).json({ message: "Codigo de acceso invalido" });
             if (decoded.payload.Id !== CODIGO) return res.status(401).json({ message: "Codigo incorrecto" });
-            const token = await createAccessToken({ Id: user[0].ID }, '1h');
+            const token = await createAccessToken({ Id: user[0].ID }, '10s');
             res.cookie('token', token)
             res.json([user]);
         })
