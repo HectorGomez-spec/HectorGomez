@@ -71,6 +71,9 @@ function Nav() {
               <ul>
                 <li><a href="/Usuarios">Usuarios</a></li>
                 <li><a href="/estadoUsuario">Roles</a></li>
+                <li><a href="#">Salas</a></li>
+                <li><a href="#">Especialidad</a></li>
+                <li><a href="#">Objetos</a></li>
                 <li><a href="#">Roles</a></li>
                 <li><a href="#">Parámetros</a></li>
                 <li><a href="/estadoUsuario">Estados</a></li>
