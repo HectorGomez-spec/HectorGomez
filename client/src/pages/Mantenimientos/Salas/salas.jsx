@@ -6,7 +6,8 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
-  { id: "SALAS", label: "Salas", minWidth: 100 },
+  { id: "N", label: "N°", minWidth: 100 },
+  { id: "SALA", label: "Salas", minWidth: 100 },
   { id: "Acciones", label: "Acciones", minWidth: 100 },
 ];
 
@@ -17,6 +18,7 @@ const Salas = () => {
   async function getData() {
     try {
       const response = await axios.get("/getSalas");
+      console.log(response.data); 
       setRows(response.data);
   
     } catch (error) {
@@ -48,7 +50,7 @@ const Salas = () => {
 
   const filteredData = rows?.filter(
     (item) =>
-      item.SALAS?.toLowerCase().includes(searchTerm.toLowerCase()) 
+      item.SALA?.toLowerCase().includes(searchTerm.toLowerCase()) 
   );
 
   return (

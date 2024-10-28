@@ -57,7 +57,7 @@ export const Formulario = ({ row, closeModal }) => {
               type="text"
               placeholder="Salas"
               autoFocus
-              {...register("SALAS", { required: true })}
+              {...register("SALA", { required: true })}
             />
           </Form.Group>
         </Col>

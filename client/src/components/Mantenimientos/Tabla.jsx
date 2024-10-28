@@ -124,6 +124,7 @@ export default function Tabla({
                                 )}
                               </>
                             )}
+                            {column.id === "N" && index + 1}
                           </TableCell>
                         );
                       })}
