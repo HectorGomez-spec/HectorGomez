@@ -3,7 +3,7 @@ import { pool } from "../../database/conexion.js";
 export const getSalas = async (req, res) => {
     try {
         const [response] = await pool.query('SELECT * FROM salas');
-        return res.status(200).json(response.map);
+        return res.status(200).json(response);
     } catch (error) {
         console.log(error);
         return res.status(500).json('Error al obtener los salas');
@@ -12,9 +12,10 @@ export const getSalas = async (req, res) => {
 
 export const crearSalas = async (req, res) => {
     const { SALA } = req.body; //se tiene que llamar igual que en el register del front
+    console.log(req.body);
     try {
         await pool.query('INSERT INTO salas (SALA) VALUES (?)', [SALA]);
-        return res.status(200).json('sala actualizado correctamente');
+        return res.status(200).json('sala creada correctamente');
     } catch (error) {
         console.log(error);
         return res.status(500).json('Error al obtener las salas');

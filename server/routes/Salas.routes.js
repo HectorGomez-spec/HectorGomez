@@ -4,7 +4,7 @@ import {getSalas, actualizarSalas, crearSalas, eliminarSalas} from '../controlle
 const router = Router();
 
 router.get('/getSalas', getSalas);
-router.post('/crearSalas', actualizarSalas);
+router.post('/crearSalas', crearSalas);
 router.put('/actualizarSalas', actualizarSalas);
 router.delete('/eliminarSalas/:ID', eliminarSalas);
 
