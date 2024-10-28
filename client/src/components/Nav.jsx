@@ -70,6 +70,9 @@ function Nav() {
               <a href="#" className={styles.nav_ul_li_a}>Seguridad</a>
               <ul>
                 <li><a href="/Usuarios">Usuarios</a></li>
+                <li><a href="#">Salas</a></li>
+                <li><a href="#">Especialidad</a></li>
+                <li><a href="#">Objetos</a></li>
                 <li><a href="#">Roles</a></li>
                 <li><a href="#">Parámetros</a></li>
                 <li><a href="#">Permisos</a></li>
