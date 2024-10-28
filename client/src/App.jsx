@@ -7,9 +7,10 @@ import { Toaster } from "sonner";
 import Nav from "./components/Nav";
 import RecuperarContraseña from "./pages/Login/RecuperarContraseña";
 import Registro from "./pages/Login/Registro";
-
 // Cargar Usuarios solo cuando se necesite
 const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
+const EstadoUsuario = lazy(() => import("./pages/Mantenimientos/EstadoUsuario/EstadoUsuario"));
+
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
           <Route element={<Nav />}>
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/usuarios"element={<Suspense fallback={<div>Cargando usuarios...</div>}><Usuarios /></Suspense>}/>
+            <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
+
           </Route>
         </Route>
 

@@ -3,6 +3,8 @@ import cors from 'cors'
 import cookie from 'cookie-parser'
 import auth from './routes/auth.routes.js'
 import Usuarios from './routes/usuarios.routes.js'
+import EstadoUsuario from './routes/EstadoUsuario.routes.js'
+
 
 const app = express();
 
@@ -16,8 +18,7 @@ app.use(cookie());
 
 app.use('/api',auth);
 app.use('/api',Usuarios);
-
-
+app.use('/api',EstadoUsuario);
 
 
 app.listen(3000);
