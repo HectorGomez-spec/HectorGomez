@@ -28,9 +28,10 @@ const transporter = mailer.createTransport({
     auth: {
         user: 'proyectoimplementacion103@gmail.com', // Tu dirección de correo
         pass: 'mzvg udqw pgdu npyj' // Contraseña generada para la aplicación (recomendado)
-    }
+    },tls: {
+        rejectUnauthorized: false
+      }
 });
-
 export const enviarCorreo = async (asunto, texto, html,destinatario) => {
     const mailOptions = {
         from: 'proyectoimplementacion103@gmail.com', // Correo del emisor
