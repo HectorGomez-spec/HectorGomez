@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
-const columnas = [
+const columnas = [ 
+  { id: "N", label: "N°", minWidth: 100 },
   { id: "NOMBRE_ESPECIALIDAD", label: "Especialidad", minWidth: 100 },
   { id: "Acciones", label: "Acciones", minWidth: 100 },
 ];

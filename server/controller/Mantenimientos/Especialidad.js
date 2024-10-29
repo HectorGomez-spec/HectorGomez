@@ -3,7 +3,7 @@ import { pool } from "../../database/conexion.js";
 export const getEspecialidad = async (req, res) => {
     try {
         const [response] = await pool.query('SELECT * FROM especialidad');
-        return res.status(200).json(response.map);
+        return res.status(200).json(response);
     } catch (error) {
         console.log(error);
         return res.status(500).json('Error al obtener la especialidad');
@@ -25,7 +25,7 @@ export const actualizarEspecialidad = async (req, res) => {
     const { ID, NOMBRE_ESPECIALIDAD } = req.body;
     console.log(req.body);
     try {
-        await pool.query('UPDATE salas SET especialidad = ? WHERE ID = ? ', [NOMBRE_ESPECIALIDAD, ID]);
+        await pool.query('UPDATE especialidad SET NOMBRE_ESPECIALIDAD = ? WHERE ID = ? ', [NOMBRE_ESPECIALIDAD, ID]);
         return res.status(200).json('especialidad actualizada correctamente');
     } catch (error) {
         console.log(error); 

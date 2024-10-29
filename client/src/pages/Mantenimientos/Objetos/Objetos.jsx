@@ -7,6 +7,7 @@ import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 
 const columnas = [
+  { id: "N", label: "N°", minWidth: 100 },
   { id: "OBJETO", label: "Objeto", minWidth: 100 },
   { id: "DESCRIPCION", label: "Descripcion", minWidth: 100 },
   { id: "Acciones", label: "Acciones", minWidth: 100 },

@@ -3,7 +3,7 @@ import { pool } from "../../database/conexion.js";
 export const getObjetos = async (req, res) => {
     try {
         const [response] = await pool.query('SELECT * FROM objetos');
-        return res.status(200).json(response.map);
+        return res.status(200).json(response);
     } catch (error) {
         console.log(error);
         return res.status(500).json('Error al obtener los objetos');
@@ -25,7 +25,7 @@ export const actualizarObjetos = async (req, res) => {
     const { ID, OBJETO, DESCRIPCION } = req.body;
     console.log(req.body);
     try {
-        await pool.query('UPDATE objetos SET OBJETO = ? WHERE ID = ? ', [OBJETO, DESCRIPCION, ID]);
+        await pool.query('UPDATE objetos SET OBJETO = ?, DESCRIPCION = ? WHERE ID = ? ', [OBJETO, DESCRIPCION, ID]);
         return res.status(200).json('objeto actualizada correctamente');
     } catch (error) {
         console.log(error); 

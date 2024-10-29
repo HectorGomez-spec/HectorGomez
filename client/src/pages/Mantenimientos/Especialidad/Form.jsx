@@ -40,7 +40,7 @@ export const Formulario = ({ row, closeModal }) => {
     } else {// si estan creando
       try {
         const response = await axios.post("/crearEspecialidad", values);
-        const newRows = await axios.get("/getEspeialidad");
+        const newRows = await axios.get("/getEspecialidad");
         toast.success(response.data);
         closeModal(false);
         setRows(newRows.data);

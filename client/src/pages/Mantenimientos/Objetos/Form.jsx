@@ -59,7 +59,7 @@ export const Formulario = ({ row, closeModal }) => {
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Salas</Form.Label>
+            <Form.Label>Nombre Objeto</Form.Label>
             <Form.Control
               type="text"
               placeholder="Objetos"
@@ -73,7 +73,7 @@ export const Formulario = ({ row, closeModal }) => {
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Salas</Form.Label>
+            <Form.Label>Descripcion</Form.Label>
             <Form.Control
               type="text"
               placeholder="Descripcion"
