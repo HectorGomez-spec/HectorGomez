@@ -32,11 +32,7 @@ function Nav() {
         <nav className={styles.nav} id="main-nav">
           <ul className={styles.nav_ul}>
             <li className={styles.nav_ul_li}>
-              <a href="/Pages/index.html" className={styles.nav_ul_li_a}>Inicio</a>
-              <ul>
-                <li><a href="#">Submenú 1</a></li>
-                <li><a href="#">Submenú 2</a></li>
-              </ul>
+              <a href="/inicio" className={styles.nav_ul_li_a}>Inicio</a>
             </li>
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Pacientes</a>
@@ -48,8 +44,8 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="salas.html" className={styles.nav_ul_li_a}>Salas</a>
               <ul>
-                <li><a href="#">Salas disponibles</a></li>
-                <li><a href="#">Historial de Salas</a></li>
+                <li><a href="/Salas">Salas</a></li>
+                <li><a href="/Especialidad">Especialidad</a></li>
               </ul>
             </li>
             <li className={styles.nav_ul_li}>
@@ -70,9 +66,7 @@ function Nav() {
               <a href="#" className={styles.nav_ul_li_a}>Seguridad</a>
               <ul>
                 <li><a href="/Usuarios">Usuarios</a></li>
-                <li><a href="/estadoUsuario">Roles</a></li>
-                <li><a href="/Salas">Salas</a></li>
-                <li><a href="/Especialidad">Especialidad</a></li>
+                <li><a href="/permisos">Permisos</a></li>
                 <li><a href="Objetos">Objetos</a></li>
                 <li><a href="/Roles">Roles</a></li>
                 <li><a href="/Parametros">Parámetros</a></li>
