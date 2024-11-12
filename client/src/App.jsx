@@ -11,10 +11,11 @@ import Registro from "./pages/Login/Registro";
 // Cargar componentes solo cuando se necesite
 const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
 const EstadoUsuario = lazy(() => import("./pages/Mantenimientos/EstadoUsuario/EstadoUsuario"));
-const Salas = lazy(() => import("./pages/Mantenimientos/Salas/salas"));
+const SalasMantenimiento = lazy(() => import("./pages/Mantenimientos/Salas/salas"));
 const Especialidad = lazy(() => import("./pages/Mantenimientos/Especialidad/especialidad"));
 const Objetos = lazy(() => import("./pages/Mantenimientos/Objetos/Objetos"));
 const Bitacora = lazy(() => import("./pages/Bitacora/Bitacora"));
+const Salas = lazy(() => import("./pages/Salas/Salas"));
 
 
 function App() {
@@ -31,13 +32,15 @@ function App() {
         {/* las rutas protegidas van aquí */}
         <Route element={<ProtectedRoutes />}>
           <Route element={<Nav />}>
-            <Route path="/inicio" element={<Perfil />} />
+            <Route path="/perfil" element={<Perfil />} />
             <Route path="/usuarios"element={<Suspense fallback={<div>Cargando usuarios...</div>}><Usuarios /></Suspense>}/>
-            <Route path="/salas"element={<Suspense fallback={<div>Cargando Salas...</div>}><Salas /></Suspense>}/>
+            <Route path="/salasMantenimiento"element={<Suspense fallback={<div>Cargando Salas...</div>}><SalasMantenimiento /></Suspense>}/>
             <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Especialidad /></Suspense>}/>
             <Route path="/Objetos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Objetos /></Suspense>}/>
             <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
             <Route path="/bitacora" element={<Suspense fallback={<div>Cargando bitacora...</div>}><Bitacora /></Suspense>}/>
+            <Route path="/Salas" element={<Suspense fallback={<div>Cargando salas...</div>}><Salas /></Suspense>}/>
+
           </Route>
         </Route>
 

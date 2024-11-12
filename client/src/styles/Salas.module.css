@@ -1,0 +1,51 @@
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #003366; /* Azul oscuro */
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 10px; /* Espaciado entre los elementos */
+}
+
+.listItem {
+    background-color: #e0f2f1;
+    padding: 10px; /* Reduce el padding */
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+.listItem:hover {
+    background-color: #b2ebf2;
+}
+
+.link {
+    text-decoration: none;
+    color: #003366;
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    font-weight: bold;
+    display: block;
+    flex: 1;
+}
+
+.salaImage {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #003366;
+}
