@@ -2,7 +2,6 @@ header {
     background-color: #003366;
     /* Azul oscuro */
     color: white;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,10 +13,10 @@ header {
 }
 
 .logo_img {
-    width: 200px;
+    width: 250px;
     /* Tamaño pequeño para el logo */
     height: auto;
-    margin-right: 100px;
+    margin-right: 150px;
     /* Espacio entre el logo y el título */
 }
 

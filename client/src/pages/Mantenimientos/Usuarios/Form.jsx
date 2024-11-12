@@ -18,6 +18,7 @@ export const Formulario = ({ row, closeModal }) => {
       setRoles(response.data);
       const resp2 = await axios.get("/getEstados");
       setEstados(resp2.data);
+      console.log(user)
     }
     getRoles();
     console.log(row);
@@ -50,6 +51,8 @@ export const Formulario = ({ row, closeModal }) => {
               toast.success(response.data);
               closeModal(false);
               setRows(newRows.data);
+              await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} editó un usuario`});
+
             } catch (error) {
               toast.error(error.response.data); // Muestra el mensaje de error
               console.error(error);
@@ -64,7 +67,7 @@ export const Formulario = ({ row, closeModal }) => {
         toast.success(response.data);
         closeModal(false);
         setRows(newRows.data);
-        console.log(values);
+        await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} creó el usuario ${values.NOMBRE} ${values.APELLIDO}`});
       } catch (error) {
         toast.error(error.response.data); // Muestra el mensaje de error
         console.error(error);

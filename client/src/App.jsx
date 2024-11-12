@@ -7,14 +7,14 @@ import { Toaster } from "sonner";
 import Nav from "./components/Nav";
 import RecuperarContraseña from "./pages/Login/RecuperarContraseña";
 import Registro from "./pages/Login/Registro";
-//import Salas from "./pages/Mantenimientos/Salas/salas";
-// Cargar Usuarios solo cuando se necesite
+
+// Cargar componentes solo cuando se necesite
 const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
 const EstadoUsuario = lazy(() => import("./pages/Mantenimientos/EstadoUsuario/EstadoUsuario"));
-
 const Salas = lazy(() => import("./pages/Mantenimientos/Salas/salas"));
 const Especialidad = lazy(() => import("./pages/Mantenimientos/Especialidad/especialidad"));
 const Objetos = lazy(() => import("./pages/Mantenimientos/Objetos/Objetos"));
+const Bitacora = lazy(() => import("./pages/Bitacora/Bitacora"));
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
             <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Especialidad /></Suspense>}/>
             <Route path="/Objetos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Objetos /></Suspense>}/>
             <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
-
+            <Route path="/bitacora" element={<Suspense fallback={<div>Cargando bitacora...</div>}><Bitacora /></Suspense>}/>
           </Route>
         </Route>
 

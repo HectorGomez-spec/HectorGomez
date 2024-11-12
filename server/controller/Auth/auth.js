@@ -46,7 +46,7 @@ export const login = async (req, res) => {
 
         //si la contraseña es correcta, se crea un token
         const codigo = generarCodigo();
-        const token = await createAccessToken({ Id: codigo }, '2m');
+        const token = await createAccessToken({ Id: codigo }, '2h');
         //se actualiza el token en la base de datos
         await pool.query('update Usuario set Token = ? where Id = ?', [token, user[0].ID]);
         enviarCorreo('Codigo de acceso', '', `Hola ${user[0].NOMBRE} este es tu codigo de acceso: <strong>${codigo}</strong>, tienes 2 minutos para usarlo`, CORREO);
@@ -68,7 +68,7 @@ export const verifyCode = async (req, res) => {
         jwt.verify(user[0].TOKEN, SECRET_KEY, async (err, decoded) => {
             if (err) return res.status(401).json({ message: "Codigo de acceso invalido" });
             if (decoded.payload.Id !== CODIGO) return res.status(401).json({ message: "Codigo incorrecto" });
-            const token = await createAccessToken({ Id: user[0].ID }, '1h');
+            const token = await createAccessToken({ Id: user[0].ID }, '2h');
             res.cookie('token', token)
             res.json([user]);
         })
@@ -113,6 +113,36 @@ export const recuperarContraseña = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+export const getBitacora = async (req,res)=>{
+    try {
+        const [bitacora] = await pool.query('select * from Bitacora');
+        res.json(bitacora);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const insertBitacora = async (req,res)=>{
+    try{
+        const {Accion} = req.body;
+        const resp = await pool.query('insert into Bitacora (ACCION,FECHA_ACCION) values (?,NOW())',[Accion]);   
+    }catch(error){
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const eliminarBitacora = async (req,res)=>{
+    try {
+        const {Id} = req.params;
+        await pool.query('delete from Bitacora where ID = ?',[Id]);
+        console.log(Id);
+        res.json({message: "Bitacora eliminada"});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 
 // export const actualizarPermisos = async (req, res) => {
 //     const { Id } = req.params;
