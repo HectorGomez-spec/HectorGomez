@@ -31,7 +31,7 @@ function App() {
         {/* las rutas protegidas van aquí */}
         <Route element={<ProtectedRoutes />}>
           <Route element={<Nav />}>
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/inicio" element={<Perfil />} />
             <Route path="/usuarios"element={<Suspense fallback={<div>Cargando usuarios...</div>}><Usuarios /></Suspense>}/>
             <Route path="/salas"element={<Suspense fallback={<div>Cargando Salas...</div>}><Salas /></Suspense>}/>
             <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Especialidad /></Suspense>}/>
