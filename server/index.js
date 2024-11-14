@@ -4,7 +4,6 @@ import cookie from 'cookie-parser'
 import auth from './routes/auth.routes.js'
 import Usuarios from './routes/usuarios.routes.js'
 import EstadoUsuario from './routes/EstadoUsuario.routes.js'
-
 import Salas from './routes/Salas.routes.js'
 import Especialidad from './routes/Especialidad.routes.js'
 import Objetos from './routes/Objetos.routes.js'

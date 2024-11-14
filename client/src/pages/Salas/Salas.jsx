@@ -20,11 +20,11 @@ const Salas = () => {
                 {[
                     { src: img1, alt: '2do Piso', link: '/Pages/2do Piso.html' },
                     { src: img2, alt: '5to Piso', link: '/Pages/5do Piso.html' },
-                    { src: img3, alt: 'Cardiologia', link: '/Pages/Sala_Cardioloia.html' },
+                    { src: img3, alt: 'Cardiologia', link: '/SalaCardiologia' },
                     { src: img4, alt: 'Emergencia', link: '/Pages/Sala_Emergencias.html' },
                     { src: img5, alt: 'Endoscopia', link: '/Pages/Sala_Endoscopia.html' },
                     { src: img6, alt: 'Maternidad', link: '/Pages/Sala_Maternidad.html' },
-                    { src: img7, alt: 'Oncología', link: '/Pages/Sala_Oncologica.html' },
+                    { src: img7, alt: 'Oncología', link: '/SalaOncologia' },
                     { src: img8, alt: 'Quirofano', link: '/Pages/Sala_Quirofano.html' },
                     
                     

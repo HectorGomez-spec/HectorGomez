@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    font-size: 38px;
+    text-align: center;
+  }
+  
+  /* Navigation */
+  .main_nav {
+    background-color: #156ca1;
+    padding: 10px 20px;
+  }
+  
+  .main_nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main_nav ul li {
+    padding: 10px 20px;
+  }
+  
+  .main_nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .search_bar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .search_bar input[type="text"] {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .search_bar button {
+    padding: 7px 15px;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search_bar button:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Sections */
+  .section_description, .section_patient_monitoring, .section_device_usage, .section_epidemiological_reports, .section_upcoming_appointments {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .section_description:hover, .section_patient_monitoring:hover, .section_device_usage:hover, .section_epidemiological_reports:hover, .section_upcoming_appointments:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .section_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+  }
+  
+  .section_content {
+    padding: 15px;
+    background-color: #fafafa;
+  }
+  
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  
+  th {
+    background-color: #005f99;
+    color: white;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover td {
+    background-color: #e0f2f1;
+  }
+  
+  /* Actions */
+  .actions button, .update_button {
+    background-color: #005f99;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions button:hover, .update_button:hover {
+    background-color:  #ff4c4c;
+  }
+  
+  .actions button:active, .update_button:active {
+    transform: scale(0.98);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer img {
+    max-height: 100%;
+    height: auto;
+    width: 100%;
+  }
+  
+  /* Logo and Session Info */
+  .logo img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .session_info {
+    color: white;
+    text-align: center;
+  }
+  
+  .session_info img {
+    width: 40px;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px auto;
+  }
+  
+  .session_link {
+    color: #f8f9fa;
+  }
+  
+  .has_submenu:hover {
+    cursor: pointer;
+  }
+  
