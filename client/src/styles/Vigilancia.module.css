@@ -1,0 +1,110 @@
+/* Estilos en formato de módulo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.session_info {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#main_nav {
+  background-color: #156ca1;
+  padding: 10px 20px;
+}
+
+#main_nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+#main_nav ul li {
+  padding: 5px 10px;
+}
+
+.search_bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.search_bar input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.search_bar button {
+  background-color: #005f99;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.subtitles {
+  margin-top: 20px;
+}
+
+.table_container {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.buttons_container {
+  margin-top: 20px;
+}
+
+.btn_modificar{
+    padding: 10px 15px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+.btn_eliminar {
+  padding: 10px 15px;
+  background-color: #ff0d0d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_modificar:hover,
+.btn_eliminar:hover {
+  background-color: #003366;
+}
+
+footer {
+  text-align: center;
+  background-color: #003366;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

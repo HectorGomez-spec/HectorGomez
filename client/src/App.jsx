@@ -8,6 +8,7 @@ import Nav from "./components/Nav";
 import RecuperarContraseña from "./pages/Login/RecuperarContraseña";
 import Registro from "./pages/Login/Registro";
 
+
 // Cargar componentes solo cuando se necesite
 const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
 const EstadoUsuario = lazy(() => import("./pages/Mantenimientos/EstadoUsuario/EstadoUsuario"));
@@ -16,7 +17,10 @@ const Especialidad = lazy(() => import("./pages/Mantenimientos/Especialidad/espe
 const Objetos = lazy(() => import("./pages/Mantenimientos/Objetos/Objetos"));
 const Bitacora = lazy(() => import("./pages/Bitacora/Bitacora"));
 const Salas = lazy(() => import("./pages/Salas/Salas"));
-
+const SalaOncologia = lazy(() => import("./pages/Salas/SalaOncologia"));
+const SalaCardiologia = lazy(() => import("./pages/Salas/SalaCardiologia"));
+const Vigilancia = lazy(() => import("./pages/Vigilancia/Vigilancia"));
+const ControlLavado = lazy(() => import("./pages/Vigilancia/ControlLavado"));
 
 function App() {
   return (
@@ -40,6 +44,11 @@ function App() {
             <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
             <Route path="/bitacora" element={<Suspense fallback={<div>Cargando bitacora...</div>}><Bitacora /></Suspense>}/>
             <Route path="/Salas" element={<Suspense fallback={<div>Cargando salas...</div>}><Salas /></Suspense>}/>
+            <Route path="/SalaOncologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaOncologia /></Suspense>}/>
+            <Route path="/SalaCardiologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaCardiologia /></Suspense>}/>
+            <Route path="/Vigilancia" element={<Suspense fallback={<div>Cargando vigilancia...</div>}><Vigilancia /></Suspense>}/>
+            <Route path="/ControlLavado" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlLavado /></Suspense>}/>
+
 
           </Route>
         </Route>

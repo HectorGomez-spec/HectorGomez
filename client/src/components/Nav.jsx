@@ -46,7 +46,7 @@ function Nav() {
               </ul>
             </li>
             <li className={styles.nav_ul_li}>
-              <a href="salas.html" className={styles.nav_ul_li_a}>Salas</a>
+              <a href="#" className={styles.nav_ul_li_a}>Salas</a>
               <ul>
                 <li><a href="/Salas">Salas</a></li>
                 <li><a href="#">Historial de Salas</a></li>
@@ -56,6 +56,8 @@ function Nav() {
               <a href="#" className={styles.nav_ul_li_a}>Gestión</a>
               <ul>
                 <li><a href="/Especialidad">Especialidad</a></li>
+                <li><a href="/Vigilancia">Vigilancia</a></li>
+                <li><a href="/ControlLavado">Control Lavado</a></li>
                 <li><a href="#">Gestión de Personal</a></li>
                 <li><a href="#">Reportes</a></li>
               </ul>
@@ -76,14 +78,12 @@ function Nav() {
                 <li><a href="/Parametros">Parámetros</a></li>
                 <li><a href="/estadoUsuario">Estados</a></li>
                 <li><a href="/Bitacora">Bitacora</a></li>
+                
 
               </ul>
             </li>
           </ul>
-          <div className={styles.searchBar}>
-            <input type="text" placeholder="Buscar..." className={styles.searchBar_input} />
-            <button className={styles.searchBar_button}>Buscar</button>
-          </div>
+          
         </nav>
       )}
 

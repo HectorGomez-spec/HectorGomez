@@ -1,0 +1,260 @@
+.session_info {
+    color: white;
+    text-align: center;
+}
+
+.session_info img {
+    width: 40px;
+    /* Tamaño del ícono de usuario */
+    height: auto;
+    display: block;
+    margin: 0 auto 5px auto;
+    /* Centrar y agregar espacio inferior */
+}
+
+main {
+    padding: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.action_card {
+    background-color: #e0f2f1;
+    /* Azul claro */
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.action_card:hover {
+    background-color: #b2ebf2;
+    /* Azul más claro al pasar el mouse */
+}
+
+.action_card h3 {
+    margin: 0 0 10px;
+    color: #003366;
+    /* Azul oscuro */
+}
+
+.action_card button {
+    padding: 7px 15px;
+    background-color: #005f99;
+    /* Azul intermedio */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action_card button:hover {
+    background-color: #ff4c4c;
+    /* Rojo de alerta */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    /* Azul oscuro */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer img {
+    max-height: 100%;
+    height: auto;
+    width: 100%;
+}
+
+#submenu_nav {
+    background-color: #156ca1;
+    /* Azul intermedio */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#submenu_nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submenu_nav ul li {
+    padding: 10px 20px;
+}
+
+#submenu_nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Formulario Control Lavado de Manos*/
+.container {
+    width: 95%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto; /* Asegura que esté centrado horizontalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.container h1 {
+    text-align: center;
+    color: #333;
+}
+.container h2 {
+    color: #003366;
+    font-size: 26px; /* Tamaño de letra aumentado */
+}
+.container h3 {
+    color: #333;
+    font-size: 22px; /* Tamaño de letra aumentado */
+}
+.formGroup {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    background-color: #e0f2f1; /* Color de fondo del recuadro */
+    padding: 15px;
+    border-radius: 8px;  
+}
+.formGroup label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px; /* Tamaño de letra aumentado */
+}
+.formRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Reducir el espacio entre campos */
+    margin-bottom: 10px; /* Reducir el margen inferior */
+}
+.formRow div {
+    flex: 1;
+    margin-right: 10px; /* Mantén el margen entre campos en la misma fila */
+}
+
+select#area  {
+ width: 250px; /* Cambia este valor según lo necesites */
+}
+
+select, input {
+    width: 100%; /* Ajusta el ancho al contenedor */
+    max-width: none; /* Elimina el ancho máximo definido previamente */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+input#num_sesion {
+    width: 100%; /* Ajusta el ancho al contenedor */
+    padding: 8px;      
+    background-color: #ffffff; /* Fondo blanco */
+    font-size: 16px; /* Tamaño de letra */
+    transition: border-color 0.3s ease; /* Transición suave para el borde */
+}
+input#num_sesion:focus {
+    outline: none; /* Elimina el borde predeterminado del navegador */
+}
+.form_actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form_actions button:hover {
+    background-color: #ff4c4c;
+}
+.indicacionesRealizadas {
+    border: 1px solid #ccc;
+    background-color: #e0f2f1; /* Color de fondo del recuadro */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.momentosLista {
+    list-style-type: none;
+    padding: 0;
+}
+.momentosLista li {
+    margin-bottom: 20px;
+}
+
+.itemHeader {
+    display: flex;
+   align-items: center;
+}
+.itemHeader input {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80px;
+    text-align: center;
+}
+.itemDetails {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.itemDetails input[type="text"] {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80px;
+    text-align: center; 
+}
+.itemDetails button{
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.itemDetails button:hover {
+    background-color: #ff4c4c;
+}
+.itemDetails select {
+    margin-left: 10px;
+}
+.accionSelect {
+ width: 150px; /* Cambia este valor según lo necesites */
+}
+.accesorios {
+    margin-top: 20px; 
+}
+.accesorios select {
+    width: 800px;
+    height: 400px; /* Ajustar altura para permitir seleccionar múltiples elementos */
+}
