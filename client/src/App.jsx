@@ -21,6 +21,7 @@ const SalaOncologia = lazy(() => import("./pages/Salas/SalaOncologia"));
 const SalaCardiologia = lazy(() => import("./pages/Salas/SalaCardiologia"));
 const Vigilancia = lazy(() => import("./pages/Vigilancia/Vigilancia"));
 const ControlLavado = lazy(() => import("./pages/Vigilancia/ControlLavado"));
+const Pacientes = lazy(() => import("./pages/Mantenimientos/Pacientes/Pacientes"));
 
 function App() {
   return (
@@ -48,8 +49,7 @@ function App() {
             <Route path="/SalaCardiologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaCardiologia /></Suspense>}/>
             <Route path="/Vigilancia" element={<Suspense fallback={<div>Cargando vigilancia...</div>}><Vigilancia /></Suspense>}/>
             <Route path="/ControlLavado" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlLavado /></Suspense>}/>
-
-
+            <Route path="/Paciente" element={<Suspense fallback={<div>Cargando pacientes...</div>}><Pacientes /></Suspense>}/>
           </Route>
         </Route>
 

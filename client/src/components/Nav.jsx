@@ -41,8 +41,7 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Pacientes</a>
               <ul>
-                <li><a href="#">Agregar Paciente</a></li>
-                <li><a href="#">Listar Pacientes</a></li>
+                <li><a href="/Paciente">Agregar Paciente</a></li>
               </ul>
             </li>
             <li className={styles.nav_ul_li}>
