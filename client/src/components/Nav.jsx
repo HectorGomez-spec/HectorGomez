@@ -77,8 +77,7 @@ function Nav() {
                 <li><a href="/Parametros">Parámetros</a></li>
                 <li><a href="/estadoUsuario">Estados</a></li>
                 <li><a href="/Bitacora">Bitacora</a></li>
-                
-
+                <li><a href="/Permisos">Permisos</a></li>
               </ul>
             </li>
           </ul>

@@ -8,6 +8,7 @@ import Salas from './routes/Salas.routes.js'
 import Especialidad from './routes/Especialidad.routes.js'
 import Objetos from './routes/Objetos.routes.js'
 import Pacientes from './routes/Pacientes.routes.js'
+import Roles from './routes/Rol.routes.js'
 //import Objetos from '../client/src/pages/Mantenimientos/Objetos/Objetos.jsx'
 
 const app = express();
@@ -27,6 +28,7 @@ app.use('/api',Especialidad);
 app.use('/api',Objetos);
 app.use('/api',EstadoUsuario);
 app.use('/api',Pacientes);
+app.use('/api',Roles);
 
 
 app.listen(3000);
