@@ -57,8 +57,7 @@ function Nav() {
               <ul>
                 <li><a href="/Especialidad">Especialidad</a></li>
                 <li><a href="/Vigilancia">Vigilancia</a></li>
-                <li><a href="/ControlLavado">Control Lavado</a></li>
-                <li><a href="#">Gestión de Personal</a></li>
+                <li><a href="/ControlLavado">Control Lavado Manos</a></li>
                 <li><a href="#">Reportes</a></li>
               </ul>
             </li>
@@ -78,8 +77,7 @@ function Nav() {
                 <li><a href="/Parametros">Parámetros</a></li>
                 <li><a href="/estadoUsuario">Estados</a></li>
                 <li><a href="/Bitacora">Bitacora</a></li>
-                
-
+                <li><a href="/Permisos">Permisos</a></li>
               </ul>
             </li>
           </ul>

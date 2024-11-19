@@ -36,6 +36,7 @@ export default function Tabla({
     setPage(0);
   };
 
+  useEffect(() => {console.log(rows)}, []);  
   return (
     <div className="w-75  mt-5 m-auto">
       <div className="d-flex flex-column flex-md-row justify-content-between">

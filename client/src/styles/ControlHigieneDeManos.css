@@ -1,0 +1,210 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+h2, h3 {
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.form-group, .indicaciones-realizadas {
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row div {
+    flex: 1;
+    min-width: 200px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-actions button:hover {
+    background-color: #ff4c4c;
+}
+
+.momentos-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.momentos-lista li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.item-header input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+    transform: scale(1.2);
+    vertical-align: middle;
+}
+
+.item-header label {
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 2;
+}
+
+.item-details .cronometro,
+.item-details .tiempo-guardado,
+.item-details .accion-select,
+.item-details button {
+    text-align: center;
+    min-width: 100px;
+    flex-grow: 1;
+}
+
+.item-details button {
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.item-details button:hover {
+    background-color: #ff4c4c;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+}
+.accesorios {
+    margin-top: 20px;
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.accesorios select {
+    width: 800px;
+    height: 400px; /* Ajustar altura para permitir seleccionar múltiples elementos */
+}
+
+.itemHeader {
+    display: flex;
+   align-items: center;
+}
+.itemHeader input {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80px;
+    text-align: center;
+}
+.observaciones {
+    margin-top: 20px;
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .observaciones textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* Permitir solo ajuste vertical */
+  }
+  select {
+    appearance: none; /* Elimina los estilos predeterminados del navegador */
+    -webkit-appearance: none; /* Compatibilidad con Safari */
+    -moz-appearance: none; /* Compatibilidad con Firefox */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  select:focus {
+    border-color: #005f99;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 95, 153, 0.5);
+  }
+  
+  select option {
+    max-height: 200px; /* Altura máxima de las opciones */
+    overflow-y: auto; /* Permitir scroll en las opciones */
+  }
+  
+  select::-ms-expand {
+    display: none; /* Oculta la flecha de selección en IE/Edge */
+  }
+  
+  
