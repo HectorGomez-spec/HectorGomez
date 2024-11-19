@@ -48,6 +48,7 @@ function Nav() {
               <a href="#" className={styles.nav_ul_li_a}>Salas</a>
               <ul>
                 <li><a href="/Salas">Salas</a></li>
+                <li><a href="/salasMantenimiento">Salas Mantenimiento</a></li>
                 <li><a href="#">Historial de Salas</a></li>
               </ul>
             </li>
