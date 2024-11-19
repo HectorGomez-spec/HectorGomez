@@ -82,8 +82,9 @@ const ControlHigieneDeManos = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Formatea la fecha para que sea compatible con el backend
-    const formattedFecha = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    // Formatear la fecha para que coincida con las expectativas del backend (ajustada a la zona horaria local)
+    const now = new Date();
+    const formattedFecha = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0]; // Formato: YYYY-MM-DD
 
     const data = {
         fecha: formattedFecha, // Usa la fecha formateada
@@ -100,7 +101,7 @@ const ControlHigieneDeManos = () => {
         const response = await axios.post("http://localhost:3000/api/crearControl", data);
         if (response.status === 201) {
             alert("Registro guardado correctamente.");
-            // Reiniciar formulario
+            // Reiniciar los campos del formulario
             setTurno("");
             setArea("");
             setUsuario("");
@@ -116,6 +117,7 @@ const ControlHigieneDeManos = () => {
         alert("Hubo un problema al guardar los datos.");
     }
 };
+
 
 
   return (
