@@ -18,40 +18,37 @@ export function Formulario({ row, closeModal }) {
           try {
             const response = await axios.put(`/UpdatePermisos/${row.Id}`, {
               ...values,
-              IdObjeto: row.IdObjeto,
+              Id_Objeto: row.IdObjeto,
             });
             let tabla = await axios.get("/GetPermisos");
             tabla.data.map((permiso) => {
-                if (permiso.PermisoInsercion == 0) {
-                  permiso.PermisoInsercion = "NO";
+                if (permiso.Insertar == 0) {
+                  permiso.Insertar = "NO";
                 } else {
-                  permiso.PermisoInsercion = "SI";
+                  permiso.Insertar = "SI";
                 }
         
-                if (permiso.PermisoActualizar == 0) {
-                  permiso.PermisoActualizar = "NO";
+                if (permiso.Actualizar == 0) {
+                  permiso.Actualizar = "NO";
                 } else {
-                  permiso.PermisoActualizar = "SI";
+                  permiso.Actualizar = "SI";
                 }
         
-                if (permiso.PermisoEliminar == 0) {
-                  permiso.PermisoEliminar = "NO";
+                if (permiso.Eliminar == 0) {
+                  permiso.Eliminar = "NO";
                 } else {
-                  permiso.PermisoEliminar = "SI";
+                  permiso.Eliminar = "SI";
                 }
         
-                if (permiso.PermisoConsultar == 0) {
-                  permiso.PermisoConsultar = "NO";
+                if (permiso.Consultar == 0) {
+                  permiso.Consultar = "NO";
                 } else {
-                  permiso.PermisoConsultar = "SI";
+                  permiso.Consultar = "SI";
                 }
               });
             setRows(tabla.data);
             toast.success(response.data.message);
             closeModal(false);
-            console.log(user);
-            const resp2 = await axios.get(`/actualizarPermisos/${user[0][0].Id}`);
-            setUser(resp2.data);
           } catch (error) {
             toast.error('Error al guardar los cambios');
             console.log(error);
@@ -67,8 +64,8 @@ export function Formulario({ row, closeModal }) {
         <Form.Label>Permiso Insercion</Form.Label>
         <Form.Select
           aria-label="Default select example"
-          {...register("PermisoInsercion")}>
-          {row.PermisoInsercion === "SI" ? (
+          {...register("Insertar")}>
+          {row.Insertar === "SI" ? (
             <>
               <option value={1}>SI</option>
               <option value={0}>NO</option>
@@ -85,8 +82,8 @@ export function Formulario({ row, closeModal }) {
         <Form.Label>Permiso Actualizar</Form.Label>
         <Form.Select
           aria-label="Default select example"
-          {...register("PermisoActualizar")}>
-          {row.PermisoActualizar === "SI" ? (
+          {...register("Actualizar")}>
+          {row.Actualizar === "SI" ? (
             <>
               <option value={1}>SI</option>
               <option value={0}>NO</option>
@@ -103,8 +100,8 @@ export function Formulario({ row, closeModal }) {
         <Form.Label>Permiso Eliminar</Form.Label>
         <Form.Select
           aria-label="Default select example"
-          {...register("PermisoEliminar")}>
-          {row.PermisoEliminar === "SI" ? (
+          {...register("Eliminar")}>
+          {row.Eliminar === "SI" ? (
             <>
               <option value={1}>SI</option>
               <option value={0}>NO</option>
@@ -121,8 +118,8 @@ export function Formulario({ row, closeModal }) {
         <Form.Label>Permiso Consultar</Form.Label>
         <Form.Select
           aria-label="Default select example"
-          {...register("PermisoConsultar")}>
-          {row.PermisoConsultar === "SI" ? (
+          {...register("Consultar")}>
+          {row.Consultar === "SI" ? (
             <>
               <option value={1}>SI</option>
               <option value={0}>NO</option>
