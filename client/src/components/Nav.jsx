@@ -56,8 +56,7 @@ function Nav() {
               <ul>
                 <li><a href="/Especialidad">Especialidad</a></li>
                 <li><a href="/Vigilancia">Vigilancia</a></li>
-                <li><a href="/ControlLavado">Control Lavado</a></li>
-                <li><a href="#">Gestión de Personal</a></li>
+                <li><a href="/ControlLavado">Control Lavado Manos</a></li>
                 <li><a href="#">Reportes</a></li>
               </ul>
             </li>
