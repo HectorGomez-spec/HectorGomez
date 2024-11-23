@@ -67,6 +67,7 @@ const Infeccion = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Infeccion'}
       />
     </div>
   );

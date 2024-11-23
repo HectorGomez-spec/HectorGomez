@@ -68,6 +68,7 @@ const Dispositivos = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Dispositivos'}
       />
     </div>
   );

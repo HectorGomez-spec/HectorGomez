@@ -8,16 +8,32 @@ import { toast } from "sonner";
 export const Formulario = ({ row, closeModal }) => {
   const { register, handleSubmit, setValue } = useForm();
   const { setRows, user } = useAppContext();
+  const [especialidades, setEspecialidades] = useState([]);
  
   useEffect(() => {
+    async function getEspecialidades() {
+      try {
+        const response = await axios.get("/getEspecialidad");
+        setEspecialidades(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getEspecialidades();
+   
+  }, []);
+
+  useEffect(() => {
     if (row) {
+      console.log(row);
       setValue("NOMBRE", row.NOMBRE);
-      setValue("ID_USUARIO", row.ID_USUARIO);
-      setValue("ID_ESPECIALIDAD", row.ID_ESPECIALIDAD);
       setValue("DIRECCION", row.DIRECCION);
       setValue("TELEFONO", row.TELEFONO);
+      setValue("ID_ESPECIALIDAD", row.ID_ESPECIALIDAD);
     }
-  }, []);//significa que se va a ejecutar solo cuando cambie roles o estados
+
+  }, [especialidades]);  
 
   async function submit(values) {
     if (row) { // si estan actualizando
@@ -71,31 +87,19 @@ export const Formulario = ({ row, closeModal }) => {
           </Form.Group>
         </Col>
       </Row>
-
-      <Row>
-        <Col>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Usuario</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Usuario"
-              autoFocus
-              {...register("ID_USUARIO", { required: true })}
-            />
-          </Form.Group>
-        </Col>
-      </Row>
-      
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Especialidad</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Especialidad"
-              autoFocus
-              {...register("ID_ESPECIALIDAD", { required: true })}
-            />
+            <Form.Select {...register("ID_ESPECIALIDAD",{required:true})}>
+              <option value="">Seleccione una especialidad</option>
+              {especialidades.map((especialidad) => (
+                <option key={especialidad.ID} value={especialidad.ID}>
+                  {especialidad.NOMBRE_ESPECIALIDAD}
+                </option>
+              ))}
+
+            </Form.Select>
           </Form.Group>
         </Col>
       </Row>

@@ -70,6 +70,7 @@ const ControlLavado = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Control de Lavado'}
       />
     </div>
   );

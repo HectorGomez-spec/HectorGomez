@@ -69,6 +69,7 @@ const Objetos = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Objetos'}
       />
     </div>
   );

@@ -7,8 +7,7 @@ import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
   { id: "NOMBRE", label: "Nombre", minWidth: 100 },
-  { id: "ID_USUARIO", label: "Usuario", minWidth: 100 }, // en id tiene que ir el nombre de la columna en la base de datos
-  { id: "ID_ESPECIALIDAD", label: "Especialidad", minWidth: 100 },
+  { id: "NOMBRE_ESPECIALIDAD", label: "Especialidad", minWidth: 100 },
   { id: "DIRECCION", label: "Direccion", minWidth: 100 },
   { id: "TELEFONO", label: "Telefono", minWidth: 100 },
   { id: "Acciones", label: "Acciones", minWidth: 100 }, // este siempre lo dejamos
@@ -54,8 +53,7 @@ const PersonalMedico = () => {
   const filteredData = rows?.filter(
     (item) =>
     item.NOMBRE?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.ID_USUARIO?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.ID_ESPECIALIDAD?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.NOMBRE_ESPECIALIDAD?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.DIRECCION?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.TELEFONO?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -74,6 +72,7 @@ const PersonalMedico = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Personal Medico'}
       />
     </div>
   );

@@ -71,6 +71,7 @@ const Usuarios = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Usuarios'}
       />
     </div>
   );

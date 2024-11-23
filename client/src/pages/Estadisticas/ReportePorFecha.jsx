@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
-import * as XLSX from "xlsx";
+// import * as XLSX from "xlsx";
 import "../../styles/ReportePorFecha.css";
 
 const ReportePorFecha = () => {

@@ -11,10 +11,10 @@ export const Formulario = ({ row, closeModal }) => {
  
   useEffect(() => {
     if (row) {
-      setValue("NOMBRE_INFECCION", row.NOMBRE);
+      setValue("NOMBRE_INFECCION", row.NOMBRE_INFECCION);
       setValue("DESCRIPCION", row.DESCRIPCION);
     }
-  }, []);//significa que se va a ejecutar solo cuando cambie roles o estados
+  }, []);
 
   async function submit(values) {
     if (row) { // si estan actualizando

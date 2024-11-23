@@ -6,7 +6,7 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
-  { id: "Nueva", label: "Nuevo estado", minWidth: 100 },
+  { id: "N", label: "N°", minWidth: 100 },
   { id: "NOMBRE_ESTADO", label: "Nombre Estado", minWidth: 100 }, // en id tiene que ir el nombre de la columna en la base de datos
   { id: "Acciones", label: "Acciones", minWidth: 100 }, // este siempre lo dejamos
 ];
@@ -50,7 +50,6 @@ const EstadoMonitoreo = () => {
 
   const filteredData = rows?.filter(
     (item) =>
-    item.NUEVA?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.NOMBRE_ESTADO?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -68,6 +67,8 @@ const EstadoMonitoreo = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Estado Monitoreo'}
+
       />
     </div>
   );

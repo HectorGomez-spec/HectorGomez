@@ -11,7 +11,6 @@ export const Formulario = ({ row, closeModal }) => {
  
   useEffect(() => {
     if (row) {
-      setValue("Nueva", row.Nueva);
       setValue("NOMBRE_ESTADO", row.NOMBRE_ESTADO);
     }
   }, []);//significa que se va a ejecutar solo cuando cambie roles o estados
@@ -55,20 +54,6 @@ export const Formulario = ({ row, closeModal }) => {
 
   return (
     <Form className="h-75 w-75" onSubmit={handleSubmit(submit)}>
-      <Row>
-        <Col>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Nueva</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Nueva"
-              autoFocus
-              {...register("Nueva", { required: true })}
-            />
-          </Form.Group>
-        </Col>
-      </Row>
-
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

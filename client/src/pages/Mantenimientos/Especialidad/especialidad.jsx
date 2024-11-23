@@ -66,6 +66,7 @@ const Especialidad = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Especialidad'}
       />
     </div>
   );

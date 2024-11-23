@@ -87,8 +87,6 @@ function App() {
 
             <Route path="/Roles" element={<Suspense fallback={<div>Cargando roles...</div>}><Roles /></Suspense>}/>
             <Route path="/Permisos" element={<Suspense fallback={<div>Cargando permisos...</div>}><Permisos /></Suspense>}/>
-            
-
             <Route path="/reporteFecha" element={<ReporteFecha />} />
           </Route>
         </Route>

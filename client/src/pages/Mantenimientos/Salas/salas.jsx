@@ -67,6 +67,7 @@ const Salas = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo = {'Salas'}
       />
     </div>
   );

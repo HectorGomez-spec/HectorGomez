@@ -67,6 +67,7 @@ const EstadoUsuario = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
+        titulo={'Estados de Usuario'}
       />
     </div>
   );

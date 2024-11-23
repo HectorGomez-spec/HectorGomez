@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import ModalC from "./Modal";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import { GenerarPDF } from "../Pdf";
 
 export default function Tabla({
   columns,
@@ -23,6 +24,7 @@ export default function Tabla({
   permisoEliminar,
   permisoConsulta,
   permisoActualizar,
+  titulo,
 }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -36,23 +38,35 @@ export default function Tabla({
     setPage(0);
   };
 
-  useEffect(() => {console.log(rows)}, []);  
+  useEffect(() => {
+    console.log(rows);
+  }, []);
   return (
     <div className="w-75  mt-5 m-auto">
-      <div className="d-flex flex-column flex-md-row justify-content-between">
+      <div
+        style={{
+          borderBottom: "2px solid gray",
+          marginBottom: "10px",
+          color: "#061851",
+        }}>
+        <h1 style={{ color: "#003366", textAlign: "left" }}>{titulo}</h1>
+      </div>
+      <div className="d-flex flex-column flex-md-row justify-content-between mb-2">
         {modalBtnValue && (
           <div
             className="mb-2 mb-md-2"
-            style={{ width: "100%", maxWidth: "49.5%" }}>
+            style={{width: "14.5%"}}>
             <ModalC
               Nombre={modalBtnValue}
               ContenidoModal={formulario}
-              ancho="200px"
             />
           </div>
         )}
+        <div style={{width:"14.5%"}}>
+          <GenerarPDF head={columns} body={rows} nombre={titulo} />
+        </div>
         {permisoConsulta && (
-          <div className="mb-2 mb-md-2" style={{ width: "100%" }}>
+          <div className="mb-2 mb-md-2" style={{ width: "70%" }}>
             <input
               type="text"
               placeholder="Buscar..."
@@ -73,7 +87,11 @@ export default function Tabla({
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth, backgroundColor:"#005f99", color:"#fff" }}>
+                    style={{
+                      minWidth: column.minWidth,
+                      backgroundColor: "#005f99",
+                      color: "#fff",
+                    }}>
                     {column.label}
                   </TableCell>
                 ))}
@@ -105,20 +123,16 @@ export default function Tabla({
                                   <button
                                     className="btn btn-danger ms-1"
                                     onClick={() =>
-                                      toast(
-                                        "¿Desea eliminar este registro?",
-                                        {
-                                          action: {
-                                            
-                                            label: "Si, Eliminar",
-                                            onClick: () => {
-                                              {
-                                                deleteRequest(row.ID);
-                                              }
-                                            },
+                                      toast("¿Desea eliminar este registro?", {
+                                        action: {
+                                          label: "Si, Eliminar",
+                                          onClick: () => {
+                                            {
+                                              deleteRequest(row.ID);
+                                            }
                                           },
                                         },
-                                      )
+                                      })
                                     }>
                                     Eliminar
                                   </button>
