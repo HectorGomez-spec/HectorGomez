@@ -1,0 +1,75 @@
+.reportes-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reportes-container h2 {
+    text-align: center;
+    color: #003366;
+  }
+  
+  .reportes-container label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .reportes-container input[type="date"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .reportes-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .reportes-container button:hover {
+    background-color: #004080;
+  }
+  
+  .reportes-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .reportes-container table th,
+  .reportes-container table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .reportes-container table th {
+    background-color: #005f99;
+    color: white;
+  }
+  
+  .reportes-container .reporte-descargas {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .reporte-descargas button {
+    margin: 5px;
+    background-color: #28a745;
+  }
+  
+  .reporte-descargas button:hover {
+    background-color: #218838;
+  }
+  
