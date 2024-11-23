@@ -14,6 +14,7 @@ const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
 const EstadoUsuario = lazy(() => import("./pages/Mantenimientos/EstadoUsuario/EstadoUsuario"));
 const SalasMantenimiento = lazy(() => import("./pages/Mantenimientos/Salas/salas"));
 const Especialidad = lazy(() => import("./pages/Mantenimientos/Especialidad/especialidad"));
+const ControlLavado = lazy(() => import("./pages/Mantenimientos/ControlLavado/ControlLavado"));
 const Objetos = lazy(() => import("./pages/Mantenimientos/Objetos/Objetos"));
 const Bitacora = lazy(() => import("./pages/Bitacora/Bitacora"));
 const Salas = lazy(() => import("./pages/Salas/Salas"));
@@ -24,6 +25,10 @@ const ControlHigieneDeManos  = lazy(() => import("./pages/Vigilancia/Control_Man
 const Pacientes = lazy(() => import("./pages/Mantenimientos/Pacientes/Pacientes"));
 const Roles = lazy(() => import("./pages/Mantenimientos/Rol/Rol"));
 const Permisos = lazy(() => import("./pages/Mantenimientos/Permisos/Permisos"));
+const PersonalMedico = lazy(() => import("./pages/Mantenimientos/PersonalMedico/PersonalMedico"));
+const Dispositivos = lazy(() => import("./pages/Mantenimientos/Dispositivos/Dispositivos")); 
+const Infeccion = lazy(() => import("./pages/Mantenimientos/Infeccion/Infeccion")); 
+const EstadoMonitoreo = lazy(() => import("./pages/Mantenimientos/EstadoMonitoreo/EstadoMonitoreo"));
 
 function App() {
   return (
@@ -39,10 +44,16 @@ function App() {
         {/* las rutas protegidas van aquí */}
         <Route element={<ProtectedRoutes />}>
           <Route element={<Nav />}>
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil" element={<Perfil />} /> EstadoMonitoreo
             <Route path="/usuarios"element={<Suspense fallback={<div>Cargando usuarios...</div>}><Usuarios /></Suspense>}/>
             <Route path="/salasMantenimiento"element={<Suspense fallback={<div>Cargando Salas...</div>}><SalasMantenimiento /></Suspense>}/>
             <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Especialidad /></Suspense>}/>
+            <Route path="/controlLavado"element={<Suspense fallback={<div>Cargando Objetos...</div>}><ControlLavado /></Suspense>}/>
+            <Route path="/PersonalMedico"element={<Suspense fallback={<div>Cargando Objetos...</div>}><PersonalMedico /></Suspense>}/>
+            <Route path="/Infeccion"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Infeccion /></Suspense>}/>
+            <Route path="/EstadoMonitoreo"element={<Suspense fallback={<div>Cargando Objetos...</div>}><EstadoMonitoreo /></Suspense>}/>
+
+            <Route path="/Dispositivos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Dispositivos /></Suspense>}/>
             <Route path="/Objetos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Objetos /></Suspense>}/>
             <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
             <Route path="/bitacora" element={<Suspense fallback={<div>Cargando bitacora...</div>}><Bitacora /></Suspense>}/>
@@ -50,7 +61,7 @@ function App() {
             <Route path="/SalaOncologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaOncologia /></Suspense>}/>
             <Route path="/SalaCardiologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaCardiologia /></Suspense>}/>
             <Route path="/Vigilancia" element={<Suspense fallback={<div>Cargando vigilancia...</div>}><Vigilancia /></Suspense>}/>
-            <Route path="/ControlLavado" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlHigieneDeManos /></Suspense>}/>
+            <Route path="/ControlHigiene" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlHigieneDeManos /></Suspense>}/>
             <Route path="/Paciente" element={<Suspense fallback={<div>Cargando pacientes...</div>}><Pacientes /></Suspense>}/>
             <Route path="/Roles" element={<Suspense fallback={<div>Cargando roles...</div>}><Roles /></Suspense>}/>
             <Route path="/Permisos" element={<Suspense fallback={<div>Cargando permisos...</div>}><Permisos /></Suspense>}/>
