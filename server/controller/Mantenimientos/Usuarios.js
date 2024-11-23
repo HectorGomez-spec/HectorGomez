@@ -54,7 +54,7 @@ export const actualizarUsuario = async (req, res) => {
     const { ID, NOMBRE, APELLIDO, CORREO, ID_ESTADO_USUARIO, ID_ROL } = req.body;
     console.log(req.body);
     try {
-        const [resp] = await pool.query('SELECT * FROM usuario WHERE CORREO = ? AND ID <> ?', [CORREO, ID]);
+        const [resp] = await pool.query('SELECT * FROM usuario WHERE CORREO = ? AND ID <> ?', [CORREO, ID]);//validar que el correo no exista
         if (resp.length > 0) {
             return res.status(400).json('El correo ya se encuentra registrado');
         }

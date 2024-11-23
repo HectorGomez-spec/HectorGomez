@@ -3,7 +3,19 @@ import { pool } from "../../database/conexion.js";
 export const getPacientes = async (req, res) => {
     try {
         const [response] = await pool.query('SELECT P.ID, P.NOMBRE, P.EDAD, P.FECHA_NACIMIENTO, P.TELEFONO, P.IDENTIDAD, S.SALA, G.NOMBRE_GENERO, P.DIAGNOSTICO  FROM pacientes P INNER JOIN genero G ON P.ID_GENERO = G.ID INNER JOIN salas S ON P.ID_SALA = S.ID');
-        return res.status(200).json(response);
+        return res.status(200).json(response.map((paciente)=>{
+            return {
+                ID: paciente.ID,
+                NOMBRE: paciente.NOMBRE,
+                EDAD: paciente.EDAD,
+                FECHA_NACIMIENTO: new Date(paciente.FECHA_NACIMIENTO).toLocaleDateString(),
+                TELEFONO: paciente.TELEFONO,
+                IDENTIDAD: paciente.IDENTIDAD,
+                SALA: paciente.SALA,
+                GENERO: paciente.NOMBRE_GENERO,
+                DIAGNOSTICO: paciente.DIAGNOSTICO
+            }
+        }));
     } catch (error) {
         console.log(error);
         return res.status(500).json('Error al obtener los pacientes');

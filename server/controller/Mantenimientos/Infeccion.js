@@ -25,7 +25,7 @@ export const actualizarInfeccion = async (req, res) => {
     const { ID, NOMBRE_INFECCION, DESCRIPCION } = req.body;
     console.log(req.body);
     try {
-        await pool.query('UPDATE infeccion SET NOMBRE_INFECCION, DESCRIPCION = (?,?) WHERE ID = ? ', [NOMBRE_INFECCION, DESCRIPCION, ID]);
+        await pool.query('UPDATE infeccion SET NOMBRE_INFECCION = ?, DESCRIPCION = ? WHERE ID = ? ', [NOMBRE_INFECCION, DESCRIPCION, ID]);
         return res.status(200).json('Infeccion actualizado correctamente');
     } catch (error) {
         console.log(error); 

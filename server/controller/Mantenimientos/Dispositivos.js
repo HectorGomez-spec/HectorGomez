@@ -25,10 +25,10 @@ export const actualizarDispositivos = async (req, res) => {
     const { ID, DESCRIPCION, TIPO_DISPOSITIVO } = req.body;
     console.log(req.body);
     try {
-        await pool.query('UPDATE dispositivos SET DESCRIPCION, TIPO_DISPOSITIVO = (?,?) WHERE ID = ? ', [DESCRIPCION, TIPO_DISPOSITIVO, ID]);
+        await pool.query('UPDATE dispositivos SET DESCRIPCION = ?, TIPO_DISPOSITIVO = ?  WHERE ID = ? ', [DESCRIPCION, TIPO_DISPOSITIVO, ID]);
         return res.status(200).json('Dispositivo actualizado correctamente');
     } catch (error) {
-        console.log(error); 
+        console.log(error);
         return res.status(500).json('Error al actualizar Dispositivo');
     }
 }
