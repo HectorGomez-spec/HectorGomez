@@ -10,7 +10,9 @@ import Objetos from './routes/Objetos.routes.js'
 import Pacientes from './routes/Pacientes.routes.js'
 import Roles from './routes/Rol.routes.js'
 import ControlHigiene from './routes/ControlHigiene.routes.js';
+
 import Permisos from './routes/Permisos.routes.js';
+<<<<<<< HEAD
 import ControlLavado from './routes/ControlLavado.routes.js';
 import PersonalMedico from './routes/PersonalMedico.routes.js';
 import Dispositivos from './routes/Dispositivos.routes.js';
@@ -18,6 +20,10 @@ import Infeccion from './routes/Infeccion.routes.js';
 import EstadoMonitoreo from './routes/EstadoMonitoreo.routes.js'; 
 
 //import ControlLavado from '../client/src/pages/Mantenimientos/ControlLavado/ControlLavado.jsx'
+=======
+import ReporteFecha from './routes/ReporteFecha.routes.js'
+
+>>>>>>> b977a23f26f74b14869c6f9c256946f4642b7566
 //import Objetos from '../client/src/pages/Mantenimientos/Objetos/Objetos.jsx'
 
 const app = express();
@@ -29,7 +35,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookie());
-
+app.use('/api', ReporteFecha);
 app.use('/api', ControlHigiene);
 app.use('/api',auth);
 app.use('/api',Usuarios);

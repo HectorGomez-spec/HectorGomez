@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import Nav from "./components/Nav";
 import RecuperarContraseña from "./pages/Login/RecuperarContraseña";
 import Registro from "./pages/Login/Registro";
-
+import ReporteFecha from "./pages/Estadisticas/ReportePorFecha";
 
 // Cargar componentes solo cuando se necesite
 const Usuarios = lazy(() => import("./pages/Mantenimientos/Usuarios/Usuarios"));
@@ -63,8 +63,11 @@ function App() {
             <Route path="/Vigilancia" element={<Suspense fallback={<div>Cargando vigilancia...</div>}><Vigilancia /></Suspense>}/>
             <Route path="/ControlHigiene" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlHigieneDeManos /></Suspense>}/>
             <Route path="/Paciente" element={<Suspense fallback={<div>Cargando pacientes...</div>}><Pacientes /></Suspense>}/>
+
             <Route path="/Roles" element={<Suspense fallback={<div>Cargando roles...</div>}><Roles /></Suspense>}/>
             <Route path="/Permisos" element={<Suspense fallback={<div>Cargando permisos...</div>}><Permisos /></Suspense>}/>
+
+            <Route path="/reporteFecha" element={<ReporteFecha />} />
           </Route>
         </Route>
 

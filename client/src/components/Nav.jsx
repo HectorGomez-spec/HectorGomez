@@ -57,14 +57,18 @@ function Nav() {
               <ul>
                 <li><a href="/Especialidad">Especialidad</a></li>
                 <li><a href="/Vigilancia">Vigilancia</a></li>
+<<<<<<< HEAD
                 <li><a href="/ControlLavados">Control Lavado Manos</a></li>
                 <li><a href="#">Reportes</a></li>
+=======
+                <li><a href="/ControlLavado">Control Lavado Manos</a></li>
+>>>>>>> b977a23f26f74b14869c6f9c256946f4642b7566
               </ul>
             </li>
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Estadísticas</a>
               <ul>
-                <li><a href="#">Reportes Mensuales</a></li>
+                <li><a href="/reporteFecha">Reportes Control de Higiene Por Fechas</a></li>
                 <li><a href="#">Gráficos Comparativos</a></li>
               </ul>
             </li>
