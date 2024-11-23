@@ -25,6 +25,27 @@ const Pacientes = lazy(() => import("./pages/Mantenimientos/Pacientes/Pacientes"
 const Roles = lazy(() => import("./pages/Mantenimientos/Rol/Rol"));
 const Permisos = lazy(() => import("./pages/Mantenimientos/Permisos/Permisos"));
 
+
+// aqui van las cosas de keyla
+
+
+
+
+
+
+
+// hasta aqui
+
+// aqui van las cosas de keyla
+
+
+
+
+
+
+
+// hasta aqui
+
 function App() {
   return (
     <>
@@ -54,6 +75,7 @@ function App() {
             <Route path="/Paciente" element={<Suspense fallback={<div>Cargando pacientes...</div>}><Pacientes /></Suspense>}/>
             <Route path="/Roles" element={<Suspense fallback={<div>Cargando roles...</div>}><Roles /></Suspense>}/>
             <Route path="/Permisos" element={<Suspense fallback={<div>Cargando permisos...</div>}><Permisos /></Suspense>}/>
+            
           </Route>
         </Route>
 
