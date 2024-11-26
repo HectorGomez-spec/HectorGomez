@@ -10,11 +10,11 @@ const ControlHigieneDeManos = () => {
   const [observaciones, setObservaciones] = useState("");
   const [sujetoObservado, setSujetoObservado] = useState("");
   const [momentos, setMomentos] = useState([
-    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Antes del contacto con el paciente" },
-    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Antes de una tarea limpia o aséptica" },
-    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después de la exposición con fluidos corporales" },
-    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después del contacto con el paciente" },
-    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después del contacto con el entorno del paciente" },
+    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Antes del contacto con el paciente", startTime: null },
+    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Antes de una tarea limpia o aséptica", startTime: null },
+    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después de la exposición con fluidos corporales", startTime: null },
+    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después del contacto con el paciente", startTime: null },
+    { tiempo: "00:00", tiempoGuardado: "", accion: "", label: "Después del contacto con el entorno del paciente", startTime: null },
   ]);
 
   const [intervals, setIntervals] = useState({});
@@ -30,6 +30,28 @@ const ControlHigieneDeManos = () => {
     setFecha(formattedDate);
   }, []);
 
+  // Función para manejar cronómetros en segundo plano
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMomentos((prevMomentos) =>
+        prevMomentos.map((momento) => {
+          if (momento.startTime) {
+            const elapsed = Date.now() - momento.startTime;
+            const seconds = Math.floor(elapsed / 1000);
+            const minutes = Math.floor(seconds / 60);
+            return {
+              ...momento,
+              tiempo: `${String(minutes).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`,
+            };
+          }
+          return momento;
+        })
+      );
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleAccesoriosChange = (event) => {
     const { id, checked } = event.target;
     setAccesorios((prev) =>
@@ -38,87 +60,74 @@ const ControlHigieneDeManos = () => {
   };
 
   const handleFocus = (index) => {
-    if (intervals[index]?.interval) {
-      clearInterval(intervals[index].interval);
-      setIntervals((prev) => ({ ...prev, [index]: null }));
-    } else {
-      const newInterval = startCronometro(index);
-      setIntervals((prev) => ({ ...prev, [index]: newInterval }));
-    }
-  };
-
-  const startCronometro = (index) => {
-    let seconds = 0;
-    const interval = setInterval(() => {
-      seconds++;
-      const minutes = Math.floor(seconds / 60).toString().padStart(2, "0");
-      const secs = (seconds % 60).toString().padStart(2, "0");
-      setMomentos((prev) => {
-        const updatedMomentos = [...prev];
-        updatedMomentos[index] = { ...updatedMomentos[index], tiempo: `${minutes}:${secs}` };
-        return updatedMomentos;
-      });
-    }, 1000);
-
-    return { interval };
+    setMomentos((prevMomentos) => {
+      const updatedMomentos = [...prevMomentos];
+      if (!updatedMomentos[index].startTime) {
+        updatedMomentos[index].startTime = Date.now();
+      }
+      return updatedMomentos;
+    });
   };
 
   const handleFinalizar = (index) => {
-    if (intervals[index]?.interval) {
-      clearInterval(intervals[index].interval);
-      setIntervals((prev) => ({ ...prev, [index]: null }));
-      setMomentos((prev) => {
-        const updatedMomentos = [...prev];
+    setMomentos((prevMomentos) => {
+      const updatedMomentos = [...prevMomentos];
+      if (updatedMomentos[index].startTime) {
+        const elapsed = Date.now() - updatedMomentos[index].startTime;
+        const seconds = Math.floor(elapsed / 1000);
+        const minutes = Math.floor(seconds / 60);
         updatedMomentos[index] = {
           ...updatedMomentos[index],
-          tiempoGuardado: updatedMomentos[index].tiempo,
+          tiempoGuardado: `${String(minutes).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`,
           tiempo: "00:00",
+          startTime: null,
         };
-        return updatedMomentos;
-      });
-    }
+      }
+      return updatedMomentos;
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Formatear la fecha para que coincida con las expectativas del backend (ajustada a la zona horaria local)
+
     const now = new Date();
-    const formattedFecha = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0]; // Formato: YYYY-MM-DD
+    const formattedFecha = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
     const data = {
-        fecha: formattedFecha, // Usa la fecha formateada
-        turno,
-        area,
-        usuario,
-        sujeto_observado: sujetoObservado,
-        observaciones,
-        momentos,
-        accesorios,
+      fecha: formattedFecha,
+      turno,
+      area,
+      usuario,
+      sujeto_observado: sujetoObservado,
+      observaciones,
+      momentos,
+      accesorios,
     };
 
     try {
-        const response = await axios.post("http://localhost:3000/api/crearControl", data);
-        if (response.status === 201) {
-            alert("Registro guardado correctamente.");
-            // Reiniciar los campos del formulario
-            setTurno("");
-            setArea("");
-            setUsuario("");
-            setObservaciones("");
-            setSujetoObservado("");
-            setMomentos(
-                momentos.map((momento) => ({ ...momento, tiempo: "00:00", accion: "" }))
-            );
-            setAccesorios([]);
-        }
+      const response = await axios.post("http://localhost:3000/api/crearControl", data);
+      if (response.status === 201) {
+        alert("Registro guardado correctamente.");
+        setTurno("");
+        setArea("");
+        setUsuario("");
+        setObservaciones("");
+        setSujetoObservado("");
+        setMomentos(
+          momentos.map((momento) => ({
+            ...momento,
+            tiempo: "00:00",
+            accion: "",
+            startTime: null,
+          }))
+        );
+        setAccesorios([]);
+      }
     } catch (error) {
-        console.error("Error al guardar el registro:", error);
-        alert("Hubo un problema al guardar los datos.");
+      console.error("Error al guardar el registro:", error);
+      alert("Hubo un problema al guardar los datos.");
     }
-};
-
-
+  };
 
   return (
     <div className="container">
@@ -134,7 +143,9 @@ const ControlHigieneDeManos = () => {
             <div>
               <label htmlFor="turno">Turno</label>
               <select id="turno" value={turno} onChange={(e) => setTurno(e.target.value)} required>
-                <option value="" disabled>Selecciona Turno</option>
+                <option value="" disabled>
+                  Selecciona Turno
+                </option>
                 <option>Mañana</option>
                 <option>Tarde</option>
                 <option>Noche</option>
@@ -145,7 +156,9 @@ const ControlHigieneDeManos = () => {
             <div>
               <label htmlFor="area">Área/Sala</label>
               <select id="area" value={area} onChange={(e) => setArea(e.target.value)} required>
-                <option value="" disabled>Selecciona Área/Sala</option>
+                <option value="" disabled>
+                  Selecciona Área/Sala
+                </option>
                 <option>Hospitalización 5to piso</option>
                 <option>Hospitalización 2do piso</option>
                 <option>UCIN</option>
@@ -191,7 +204,9 @@ const ControlHigieneDeManos = () => {
                 onChange={(e) => setSujetoObservado(e.target.value)}
                 required
               >
-                <option value="" disabled>Selecciona Especialidad</option>
+                <option value="" disabled>
+                  Selecciona Especialidad
+                </option>
                 <option>Medico</option>
                 <option>Enfermeria</option>
                 <option>Auxiliar Enfermeria</option>
@@ -308,10 +323,6 @@ const ControlHigieneDeManos = () => {
           </li>
         </ul>
       </div>
-
-        <div className="form-actions">
-          <button type="submit">Guardar</button>
-        </div>
       </form>
     </div>
   );

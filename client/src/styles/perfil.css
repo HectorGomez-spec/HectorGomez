@@ -28,6 +28,34 @@ body {
 main {
     padding: 20px;
 }
+.perfil-background {
+    background-image: url('../src/Img/hospital-panoramica.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido hacia la parte superior */
+    padding-top: 30px; /* Agrega espacio desde arriba */
+}
+
+.perfil-background h2 {
+    color: #000000; /* Cambia el texto a color negro */
+    font-size: 2.5rem; /* Tamaño del encabezado */
+    margin-bottom: 10px;
+    text-shadow: none; /* Quita el sombreado */
+}
+
+.perfil-background p {
+    color: #000000; /* Cambia el texto a color negro */
+    font-size: 1.2rem; /* Ajusta el tamaño del texto */
+    max-width: 800px; /* Limita el ancho para que sea más legible */
+    text-align: center; /* Centra el texto */
+    text-shadow: none; /* Quita el sombreado */
+    margin-top: -10px; /* Opcional: Ajusta la posición vertical del párrafo */
+}
 
 .actions {
     display: flex;
