@@ -43,6 +43,7 @@ const Salas = () => {
       const resp =  await axios.delete(`/eliminarSalas/${id}`);
       setRows(tabla);
       toast.success(resp.data);
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó una Sala`});
     } catch (error) {
       toast.error(error.response.data);
     }

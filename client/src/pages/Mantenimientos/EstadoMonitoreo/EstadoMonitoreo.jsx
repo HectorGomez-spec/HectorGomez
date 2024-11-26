@@ -41,8 +41,8 @@ const EstadoMonitoreo = () => {
       });
       const resp =  await axios.delete(`/eliminarEstadoMonitoreo/${id}`);
       setRows(tabla);
-      toast.success(resp.data);
       await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Estado Monitoreo`});
+      toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);
     }

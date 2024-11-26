@@ -68,21 +68,21 @@ function App() {
             <Route path="/perfil" element={<Perfil />} /> EstadoMonitoreo
             <Route path="/usuarios"element={<Suspense fallback={<div>Cargando usuarios...</div>}><Usuarios /></Suspense>}/>
             <Route path="/salasMantenimiento"element={<Suspense fallback={<div>Cargando Salas...</div>}><SalasMantenimiento /></Suspense>}/>
-            <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Especialidad /></Suspense>}/>
-            <Route path="/controlLavado"element={<Suspense fallback={<div>Cargando Objetos...</div>}><ControlLavado /></Suspense>}/>
-            <Route path="/PersonalMedico"element={<Suspense fallback={<div>Cargando Objetos...</div>}><PersonalMedico /></Suspense>}/>
-            <Route path="/Infeccion"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Infeccion /></Suspense>}/>
-            <Route path="/EstadoMonitoreo"element={<Suspense fallback={<div>Cargando Objetos...</div>}><EstadoMonitoreo /></Suspense>}/>
+            <Route path="/Especialidad"element={<Suspense fallback={<div>Cargando Especialidad...</div>}><Especialidad /></Suspense>}/>
+            <Route path="/controlLavado"element={<Suspense fallback={<div>Cargando Contro lavado...</div>}><ControlLavado /></Suspense>}/>
+            <Route path="/PersonalMedico"element={<Suspense fallback={<div>Cargando personal medico...</div>}><PersonalMedico /></Suspense>}/>
+            <Route path="/Infeccion"element={<Suspense fallback={<div>Cargando Infeccion...</div>}><Infeccion /></Suspense>}/>
+            <Route path="/EstadoMonitoreo"element={<Suspense fallback={<div>Cargando Estado monitoreo...</div>}><EstadoMonitoreo /></Suspense>}/>
 
-            <Route path="/Dispositivos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Dispositivos /></Suspense>}/>
+            <Route path="/Dispositivos"element={<Suspense fallback={<div>Cargando Dispositivos...</div>}><Dispositivos /></Suspense>}/>
             <Route path="/Objetos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Objetos /></Suspense>}/>
-            <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando usuarios...</div>}><EstadoUsuario /></Suspense>}/>
+            <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando Estado Usuario...</div>}><EstadoUsuario /></Suspense>}/>
             <Route path="/bitacora" element={<Suspense fallback={<div>Cargando bitacora...</div>}><Bitacora /></Suspense>}/>
             <Route path="/Salas" element={<Suspense fallback={<div>Cargando salas...</div>}><Salas /></Suspense>}/>
             <Route path="/SalaOncologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaOncologia /></Suspense>}/>
             <Route path="/SalaCardiologia" element={<Suspense fallback={<div>Cargando salas...</div>}><SalaCardiologia /></Suspense>}/>
             <Route path="/Vigilancia" element={<Suspense fallback={<div>Cargando vigilancia...</div>}><Vigilancia /></Suspense>}/>
-            <Route path="/ControlHigiene" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlHigieneDeManos /></Suspense>}/>
+            <Route path="/ControlHigieneDeManos" element={<Suspense fallback={<div>Cargando ControlLavado...</div>}><ControlHigieneDeManos /></Suspense>}/>
             <Route path="/Paciente" element={<Suspense fallback={<div>Cargando pacientes...</div>}><Pacientes /></Suspense>}/>
 
             <Route path="/Roles" element={<Suspense fallback={<div>Cargando roles...</div>}><Roles /></Suspense>}/>

@@ -57,9 +57,9 @@ function Nav() {
               <ul>
                 <li><a href="/Especialidad">Especialidad</a></li>
                 <li><a href="/Vigilancia">Vigilancia</a></li>
-                <li><a href="/ControlLavados">Control Lavado Manos</a></li>
+                <li><a href="/ControlHigieneDeManos">Control Lavado De Manos</a></li>
                 <li><a href="#">Reportes</a></li>
-                <li><a href="/ControlLavado">Control Lavado Manos</a></li>
+
               </ul>
             </li>
             <li className={styles.nav_ul_li}>

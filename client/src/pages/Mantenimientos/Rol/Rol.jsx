@@ -43,6 +43,7 @@ const Rol = () => {
       });
       setRows(tabla);
       toast.success(resp.data.message);
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Rol`});
     } catch (error) {
       toast.error("Este rol puede ser eliminado porque alguien lo tiene asignado");
       // toast.error(error.response.data);

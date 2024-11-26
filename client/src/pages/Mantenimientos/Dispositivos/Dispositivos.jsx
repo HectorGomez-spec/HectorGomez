@@ -41,8 +41,8 @@ const Dispositivos = () => {
       });
       const resp =  await axios.delete(`/eliminarDispositivos/${id}`);
       setRows(tabla);
-      toast.success(resp.data);
       await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Dispositivos`});
+      toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);
     }

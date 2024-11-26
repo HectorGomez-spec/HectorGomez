@@ -31,6 +31,7 @@ export const Formulario = ({ row, closeModal }) => {
               toast.success(response.data);
               closeModal(false);
               setRows(newRows.data);
+              await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} actualizó un Dispositivo`});
             } catch (error) {
               toast.error(error.response.data); // Muestra el mensaje de error
               console.error(error);
@@ -45,6 +46,7 @@ export const Formulario = ({ row, closeModal }) => {
         toast.success(response.data);
         closeModal(false);
         setRows(newRows.data);
+        await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} creó un nuevo dispositivo`});
         console.log(values);
       } catch (error) {
         toast.error(error.response.data); // Muestra el mensaje de error

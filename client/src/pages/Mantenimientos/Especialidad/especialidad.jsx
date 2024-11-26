@@ -41,6 +41,7 @@ const Especialidad = () => {
       });
       const resp =  await axios.delete(`/eliminarEspecialidad/${id}`);
       setRows(tabla);
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó una especialidad`});
       toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);

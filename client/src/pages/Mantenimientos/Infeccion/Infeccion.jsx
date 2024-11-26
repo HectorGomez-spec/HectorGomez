@@ -41,6 +41,7 @@ const Infeccion = () => {
       });
       const resp =  await axios.delete(`/eliminarInfeccion/${id}`);
       setRows(tabla);
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó una infeccion`});
       toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);

@@ -33,7 +33,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookie());
 app.use('/api', ReporteFecha);
-app.use('/api', ControlHigiene);
+//app.use('/api', ControlHigiene);
 app.use('/api',auth);
 app.use('/api',Usuarios);
 app.use('/api',Salas);
@@ -48,6 +48,7 @@ app.use('/api',PersonalMedico);
 app.use('/api',Dispositivos);
 app.use('/api',Infeccion);
 app.use('/api',EstadoMonitoreo);  
+app.use('/api',ControlHigiene);
 
 
 app.listen(3000);

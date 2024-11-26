@@ -44,6 +44,7 @@ const Objetos = () => {
       const resp =  await axios.delete(`/eliminarObjetos/${id}`);
       setRows(tabla);
       toast.success(resp.data);
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Objeto`});
     } catch (error) {
       toast.error(error.response.data);
     }
