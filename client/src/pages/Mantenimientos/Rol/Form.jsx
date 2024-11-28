@@ -10,9 +10,14 @@ import axios from "../../../api/axios.js";
 import { useAppContext } from "../../../context/AppContext.jsx";
 import { useEffect, useState } from "react";
 import { BasicAccordion } from "./Accordion.jsx";
-
 export function Formulario({ row, closeModal }) {
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm();
   const { setRows } = useAppContext();
   const [Objetos, setObjetos] = useState([]);
   const [permisos, setPermisos] = useState([]); // Almacena los permisos obtenidos del rol
@@ -101,22 +106,50 @@ export function Formulario({ row, closeModal }) {
                 toast.error("Error al guardar el rol");
               }
             })}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+         <Form.Group className="mb-3">
               <Form.Label>Rol</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Nombre del rol"
-                {...register("NOMBRE_ROL", { required: true })}
+                {...register("NOMBRE_ROL", {
+                  required: "El nombre del rol es obligatorio.",
+                  validate: (value) => {
+                    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$/.test(value)) {
+                      return "Solo se permiten letras, números y espacios.";
+                    }
+                    if (/\s{2,}/.test(value)) {
+                      return "No se permiten dobles espacios.";
+                    }
+                    return true;
+                  },
+                })}
+                isInvalid={errors.NOMBRE_ROL}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.NOMBRE_ROL?.message}
+              </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+          
+            <Form.Group className="mb-3">
               <Form.Label>Descripción</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Añade una descripción..."
-                {...register("DESCRIPCION", { required: true })}
+                {...register("DESCRIPCION", {
+                  required: "La descripción es obligatoria.",
+                  validate: (value) => {
+                    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$/.test(value)) {
+                      return "No se permiten dobles espacios.";
+                    }
+                    return true;
+                  },
+                })}
+                isInvalid={errors.DESCRIPCION}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.DESCRIPCION?.message}
+              </Form.Control.Feedback>
             </Form.Group>
             {row === null ? (
               <Form.Group className="mb-3">

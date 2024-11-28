@@ -1,12 +1,12 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 
 export const Formulario = ({ row, closeModal }) => {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const { setRows, user } = useAppContext();
   const [roles, setRoles] = useState([]);
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
@@ -18,14 +18,10 @@ export const Formulario = ({ row, closeModal }) => {
       setRoles(response.data);
       const resp2 = await axios.get("/getEstados");
       setEstados(resp2.data);
-      console.log(user)
     }
     getRoles();
-    console.log(row);
   }, []);
 
-
-  
   useEffect(() => {
     if (row) {
       setValue("NOMBRE", row.NOMBRE);
@@ -34,10 +30,10 @@ export const Formulario = ({ row, closeModal }) => {
       setValue("ID_ROL", row.IDROL);
       setValue("ID_ESTADO_USUARIO", row.IDESTADO);
     }
-  }, [roles,estados]);//significa que se va a ejecutar solo cuando cambie roles o estados
+  }, [roles, estados]); // Se ejecuta solo cuando cambien roles o estados
 
   async function submit(values) {
-    if (row) { // si estan actualizando
+    if (row) {
       toast("¿Desea guardar los cambios?", {
         action: {
           label: "Guardar",
@@ -45,31 +41,30 @@ export const Formulario = ({ row, closeModal }) => {
             try {
               const response = await axios.put(
                 `/actualizarUsuario`,
-                {...values, ID: row.ID}
+                { ...values, ID: row.ID }
               );
               const newRows = await axios.get("/getUsuarios");
               toast.success(response.data);
               closeModal(false);
               setRows(newRows.data);
-              await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} editó un usuario`});
-
+              await axios.post('/insertBitacora', { Accion: `${user[0][0].NOMBRE} editó un usuario` });
             } catch (error) {
-              toast.error(error.response.data); // Muestra el mensaje de error
+              toast.error(error.response.data);
               console.error(error);
             }
           },
         },
       });
-    } else {// si estan creando
+    } else {
       try {
-        const response = await axios.post("/crearUsuario", {...values,ID_ESTADO_USUARIO: 1});
+        const response = await axios.post("/crearUsuario", { ...values, ID_ESTADO_USUARIO: 1 });
         const newRows = await axios.get("/getUsuarios");
         toast.success(response.data);
         closeModal(false);
         setRows(newRows.data);
-        await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} creó el usuario ${values.NOMBRE} ${values.APELLIDO}`});
+        await axios.post('/insertBitacora', { Accion: `${user[0][0].NOMBRE} creó el usuario ${values.NOMBRE} ${values.APELLIDO}` });
       } catch (error) {
-        toast.error(error.response.data); // Muestra el mensaje de error
+        toast.error(error.response.data);
         console.error(error);
       }
     }
@@ -85,8 +80,17 @@ export const Formulario = ({ row, closeModal }) => {
               type="text"
               placeholder="Nombres"
               autoFocus
-              {...register("NOMBRE", { required: true })}
+              {...register("NOMBRE", {
+                required: "El nombre es obligatorio.",
+                validate: (value) =>
+                  /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+( [A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/.test(value) ||
+                  "Solo se permiten letras y un espacio entre palabras.",
+              })}
+              isInvalid={errors.NOMBRE}
             />
+            <Form.Control.Feedback type="invalid">
+              {errors.NOMBRE?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
         <Col>
@@ -95,8 +99,17 @@ export const Formulario = ({ row, closeModal }) => {
             <Form.Control
               type="text"
               placeholder="Apellido"
-              {...register("APELLIDO", { required: true })}
+              {...register("APELLIDO", {
+                required: "El apellido es obligatorio.",
+                validate: (value) =>
+                  /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+( [A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/.test(value) ||
+                  "Solo se permiten letras y un espacio entre palabras.",
+              })}
+              isInvalid={errors.APELLIDO}
             />
+            <Form.Control.Feedback type="invalid">
+              {errors.APELLIDO?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>
@@ -107,14 +120,21 @@ export const Formulario = ({ row, closeModal }) => {
             <Form.Control
               type="email"
               placeholder="Correo"
-              {...register("CORREO", { required: true })}
+              {...register("CORREO", { required: "El correo es obligatorio." })}
+              isInvalid={errors.CORREO}
             />
+            <Form.Control.Feedback type="invalid">
+              {errors.CORREO?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
         <Col>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
             <Form.Label>Rol</Form.Label>
-            <Form.Select {...register("ID_ROL", { required: true })}>
+            <Form.Select
+              {...register("ID_ROL", { required: "El rol es obligatorio." })}
+              isInvalid={errors.ID_ROL}
+            >
               <option value="">Seleccione</option>
               {roles.map((rol) => (
                 <option key={rol.ID} value={rol.ID}>
@@ -122,37 +142,48 @@ export const Formulario = ({ row, closeModal }) => {
                 </option>
               ))}
             </Form.Select>
+            <Form.Control.Feedback type="invalid">
+              {errors.ID_ROL?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>
       <Row>
-        {!row && ( //si estas creando
+        {!row && ( // Si estás creando
           <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type={showPassword ? "text" : "password"} // Mostrar como texto o contraseña
                 placeholder="Contraseña"
-                {...register("USER_PASSWORD", { required: !row })} // La contraseña solo es obligatoria si no hay datos previos
+                {...register("USER_PASSWORD", {
+                  required: "La contraseña es obligatoria.",
+                  validate: (value) =>
+                    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/.test(value) ||
+                    "Debe tener al menos una mayúscula, un número, un carácter especial y 8 caracteres.",
+                })}
+                isInvalid={errors.USER_PASSWORD}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.USER_PASSWORD?.message}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Check
               type="checkbox"
               id="showPasswordCheck" // Agrega un id al checkbox
-              label={
-                <Form.Label controlId="showPasswordCheck">
-                  Mostrar contraseña
-                </Form.Label>
-              } // El label apunta al id del checkbox
+              label="Mostrar contraseña"
               onChange={(e) => setShowPassword(e.target.checked)}
             />
           </Col>
         )}
-        {row && ( //si estas actualizando
+        {row && ( // Si estás actualizando
           <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
               <Form.Label>Estado</Form.Label>
-              <Form.Select {...register("ID_ESTADO_USUARIO", { required: true })}>
+              <Form.Select
+                {...register("ID_ESTADO_USUARIO", { required: true })}
+                isInvalid={errors.ID_ESTADO_USUARIO}
+              >
                 <option value="">Seleccione</option>
                 {estados.map((estado) => (
                   <option key={estado.ID} value={estado.ID}>
@@ -160,11 +191,18 @@ export const Formulario = ({ row, closeModal }) => {
                   </option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                {errors.ID_ESTADO_USUARIO?.message}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         )}
       </Row>
-      <Button type="submit" className="w-100 mt-5" style={{backgroundColor:"#005f99", border:"none"}}>
+      <Button
+        type="submit"
+        className="w-100 mt-5"
+        style={{ backgroundColor: "#005f99", border: "none" }}
+      >
         Guardar
       </Button>
     </Form>
