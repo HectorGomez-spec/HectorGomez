@@ -72,6 +72,16 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Seguridad</a>
               <ul>
+
+                <li><a href="/Roles">Roles</a></li>
+                <li><a href="/Bitacora">Bitacora</a></li>
+                <li><a href="/Permisos">Permisos</a></li>
+              </ul>
+            </li>
+
+            <li className={styles.nav_ul_li}>
+              <a href="#" className={styles.nav_ul_li_a}>Mantenimiento</a>
+              <ul>
                 <li><a href="/Usuarios">Usuarios</a></li>
                 <li><a href="Objetos">Objetos</a></li>
                 <li><a href="/Roles">Roles</a></li>
@@ -84,10 +94,11 @@ function Nav() {
                 <li><a href="/Dispositivos">Dispositivos</a></li>  
                 <li><a href="/Infeccion">Infeccion</a></li> 
                 <li><a href="/EstadoMonitoreo">Estado Monitoreo</a></li>
+                <li><a href="/Especialidad">Especialidad</a></li>
               </ul>
             </li>
+
           </ul>
-          
         </nav>
       )}
 
