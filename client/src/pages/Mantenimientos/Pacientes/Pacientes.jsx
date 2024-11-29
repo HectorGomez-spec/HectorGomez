@@ -6,13 +6,13 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
+  { id: "N", label: "N°", minWidth: 100 },
   { id: "NOMBRE", label: "Nombre", minWidth: 100 },
   { id: "EDAD", label: "Edad", minWidth: 100 },
   { id: "FECHA_NACIMIENTO", label: "Fecha de Nacimiento", minWidth: 100 },
   { id: "TELEFONO", label: "Telefono", minWidth: 100 },
   { id: "IDENTIDAD", label: "Identidad", minWidth: 100 },
   { id: "SALA", label: "Sala", minWidth: 100 },
-  { id: "DIAGNOSTICO", label: "Diagnostico", minWidth: 100 },
   { id: "Acciones", label: "Acciones", minWidth: 100 },
 
 ];

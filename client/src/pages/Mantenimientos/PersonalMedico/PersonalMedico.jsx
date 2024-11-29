@@ -6,6 +6,7 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
+  { id: "N", label: "N", minWidth: 100 },
   { id: "NOMBRE", label: "Nombre", minWidth: 100 },
   { id: "NOMBRE_ESPECIALIDAD", label: "Especialidad", minWidth: 100 },
   { id: "DIRECCION", label: "Direccion", minWidth: 100 },

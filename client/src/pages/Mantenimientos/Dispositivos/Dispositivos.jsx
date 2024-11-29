@@ -6,6 +6,7 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
 const columnas = [
+  { id: "N", label: "N", minWidth: 100 },
   { id: "DESCRIPCION", label: "Descripcion", minWidth: 100 },
   { id: "TIPO_DISPOSITIVO", label: "TIPO DISPOSITIVO", minWidth: 100 }, // en id tiene que ir el nombre de la columna en la base de datos
   { id: "Acciones", label: "Acciones", minWidth: 100 }, // este siempre lo dejamos

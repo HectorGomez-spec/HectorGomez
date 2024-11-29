@@ -6,6 +6,7 @@ import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 
 const columnas = [
+  { id: "N", label: "N", minWidth: 100 },
   { id: "Nombre_Rol", label: "Rol", minWidth: 170 },
   { id: "Objeto", label: "Pantalla", minWidth: 100 },
   { id: "Insertar", label: "Ingresar", minWidth: 100 },

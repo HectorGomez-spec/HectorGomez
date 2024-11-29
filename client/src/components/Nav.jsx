@@ -48,14 +48,12 @@ function Nav() {
               <a href="#" className={styles.nav_ul_li_a}>Salas</a>
               <ul>
                 <li><a href="/Salas">Salas</a></li>
-                <li><a href="/salasMantenimiento">Salas Mantenimiento</a></li>
                 <li><a href="#">Historial de Salas</a></li>
               </ul>
             </li>
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Gestión</a>
               <ul>
-                <li><a href="/Especialidad">Especialidad</a></li>
                 <li><a href="/Vigilancia">Vigilancia</a></li>
                 <li><a href="/ControlHigieneDeManos">Control Lavado De Manos</a></li>
                 <li><a href="#">Reportes</a></li>
@@ -72,7 +70,8 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Seguridad</a>
               <ul>
-
+              <li><a href="/Usuarios">Usuarios</a></li>
+              <li><a href="Objetos">Objetos</a></li>
                 <li><a href="/Roles">Roles</a></li>
                 <li><a href="/Bitacora">Bitacora</a></li>
                 <li><a href="/Permisos">Permisos</a></li>
@@ -82,12 +81,8 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Mantenimiento</a>
               <ul>
-                <li><a href="/Usuarios">Usuarios</a></li>
-                <li><a href="Objetos">Objetos</a></li>
-                <li><a href="/Roles">Roles</a></li>
-                <li><a href="/Parametros">Parámetros</a></li>
-                <li><a href="/estadoUsuario">Estados</a></li>
-                <li><a href="/Bitacora">Bitacora</a></li>
+                <li><a href="/salasMantenimiento">Salas</a></li>
+                <li><a href="/estadoUsuario">Estado Usuario</a></li>
                 <li><a href="/Permisos">Permisos</a></li>
                 <li><a href="/ControlLavado">Control Lavado</a></li>
                 <li><a href="/PersonalMedico">Personal Medico</a></li>
