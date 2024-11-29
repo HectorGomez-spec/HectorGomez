@@ -29,6 +29,7 @@ const PersonalMedico = lazy(() => import("./pages/Mantenimientos/PersonalMedico/
 const Dispositivos = lazy(() => import("./pages/Mantenimientos/Dispositivos/Dispositivos")); 
 const Infeccion = lazy(() => import("./pages/Mantenimientos/Infeccion/Infeccion")); 
 const EstadoMonitoreo = lazy(() => import("./pages/Mantenimientos/EstadoMonitoreo/EstadoMonitoreo"));
+const Genero = lazy(() => import("./pages/Mantenimientos/Genero/Genero"));
 
 
 // aqui van las cosas de keyla
@@ -73,7 +74,7 @@ function App() {
             <Route path="/PersonalMedico"element={<Suspense fallback={<div>Cargando personal medico...</div>}><PersonalMedico /></Suspense>}/>
             <Route path="/Infeccion"element={<Suspense fallback={<div>Cargando Infeccion...</div>}><Infeccion /></Suspense>}/>
             <Route path="/EstadoMonitoreo"element={<Suspense fallback={<div>Cargando Estado monitoreo...</div>}><EstadoMonitoreo /></Suspense>}/>
-
+            <Route path="/Genero"element={<Suspense fallback={<div>Cargando Estado monitoreo...</div>}><Genero /></Suspense>}/>
             <Route path="/Dispositivos"element={<Suspense fallback={<div>Cargando Dispositivos...</div>}><Dispositivos /></Suspense>}/>
             <Route path="/Objetos"element={<Suspense fallback={<div>Cargando Objetos...</div>}><Objetos /></Suspense>}/>
             <Route path="/estadoUsuario"element={<Suspense fallback={<div>Cargando Estado Usuario...</div>}><EstadoUsuario /></Suspense>}/>

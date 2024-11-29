@@ -10,6 +10,7 @@ import Objetos from './routes/Objetos.routes.js'
 import Pacientes from './routes/Pacientes.routes.js'
 import Roles from './routes/Rol.routes.js'
 import ControlHigiene from './routes/ControlHigiene.routes.js';
+import Genero from './routes/Genero.routes.js';
 
 import Permisos from './routes/Permisos.routes.js';
 import ControlLavado from './routes/ControlLavado.routes.js';
@@ -49,6 +50,7 @@ app.use('/api',Dispositivos);
 app.use('/api',Infeccion);
 app.use('/api',EstadoMonitoreo);  
 app.use('/api',ControlHigiene);
+app.use('/api',Genero);
 
 
 app.listen(3000);

@@ -84,12 +84,13 @@ function Nav() {
                 <li><a href="/salasMantenimiento">Salas</a></li>
                 <li><a href="/estadoUsuario">Estado Usuario</a></li>
                 <li><a href="/Permisos">Permisos</a></li>
-                <li><a href="/ControlLavado">Control Lavado</a></li>
+                <li><a href="/Genero">Genero</a></li>
                 <li><a href="/PersonalMedico">Personal Medico</a></li>
                 <li><a href="/Dispositivos">Dispositivos</a></li>  
                 <li><a href="/Infeccion">Infeccion</a></li> 
                 <li><a href="/EstadoMonitoreo">Estado Monitoreo</a></li>
                 <li><a href="/Especialidad">Especialidad</a></li>
+                <li><a href="/ControlLavado">Control Lavado</a></li>
               </ul>
             </li>
 
