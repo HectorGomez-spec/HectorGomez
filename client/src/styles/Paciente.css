@@ -1,0 +1,359 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    font-size: 38px;
+    text-align: center;
+}
+
+h2 {
+    color: #003366;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-right: 100px;
+}
+
+/* Navbar */
+nav {
+    background-color: #005f99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    padding: 14px 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #ff4c4c;
+    border-radius: 5px;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #005f99;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li ul li {
+    padding: 10px 20px;
+}
+
+nav ul li ul li a {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 7px 15px;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #cc0000;
+}
+
+/* Session Info */
+.session-info {
+    color: white;
+    text-align: center;
+}
+
+.session-info img {
+    width: 30px;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px auto;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+/* Formulario */
+form {
+    background-color: #e0f2f1; /* Verde claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+}
+
+form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-actions button:hover {
+    background-color: #ff4c4c;
+}
+
+/* Lista de pacientes */
+.patient-list-container {
+    background-color: #e0f2f1; /* Verde claro */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.patient-table thead {
+    background-color: #005f99;
+    color: white;
+}
+
+.patient-table th,
+.patient-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.patient-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.patient-table tr:hover {
+    background-color: #d1ecf1; /* Azul claro */
+}
+
+.patient-table td {
+    white-space: nowrap;
+}
+
+.patient-table th {
+    text-transform: uppercase;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/* Campo de búsqueda */
+input#search {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 400px; /* Ancho máximo */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Separación inferior */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño del texto */
+    transition: border-color 0.3s ease; /* Transición suave */
+  }
+  
+  input#search:focus {
+    border-color: #007bff; /* Borde azul al enfocar */
+    outline: none; /* Elimina el borde adicional al enfocar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra azul */
+  }
+/* General de la tabla */
+table.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  table.patient-table th,
+  table.patient-table td {
+    border: 1px solid #ddd; /* Bordes */
+    padding: 8px; /* Espaciado interno */
+  }
+  
+  table.patient-table th {
+    background-color: #007bff; /* Azul para encabezado */
+    color: white; /* Texto blanco */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Texto centrado */
+  }
+  
+  table.patient-table td {
+    text-align: center; /* Texto centrado en las filas */
+  }
+  
+  table.patient-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo claro para filas pares */
+  }
+  
+  table.patient-table tr:hover {
+    background-color: #f1f1f1; /* Fondo más claro al pasar el mouse */
+  }
+/* Botón de editar */
+button.edit-btn {
+    background-color: #007bff; /* Azul */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 12px; /* Espaciado interno */
+    cursor: pointer; /* Manito al pasar */
+    font-size: 14px; /* Tamaño de texto */
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+  
+  button.edit-btn:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+  }
+  
+  button.edit-btn:active {
+    background-color: #004085; /* Azul más oscuro al hacer clic */
+  }
+  button.download-btn {
+    background-color: #28a745; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.download-btn:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+  }
+  
+  button.download-btn:active {
+    background-color: #1e7e34; /* Verde más oscuro al hacer clic */
+  }
+  button.download-all-btn {
+    background-color: #6c757d; /* Gris */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  button.download-all-btn:hover {
+    background-color: #5a6268; /* Gris más oscuro */
+  }
+  
+  button.download-all-btn:active {
+    background-color: #4e555b; /* Gris aún más oscuro */
+  }
+      

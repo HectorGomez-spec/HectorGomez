@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
-// import * as XLSX from "xlsx";
+import "jspdf-autotable";
+import * as XLSX from "xlsx";
 import "../../styles/ReportePorFecha.css";
-
 const ReportePorFecha = () => {
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
   const [reportData, setReportData] = useState([]);
-
   const handleGenerarReporte = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/reporte/fechas", {
@@ -25,17 +24,14 @@ const ReportePorFecha = () => {
       alert("Hubo un problema al generar el reporte.");
     }
   };
-
   // Función para formatear fechas al formato DD/MM/YYYY
   const formatFecha = (fecha) => {
     const [year, month, day] = fecha.split("T")[0].split("-");
     return `${day}/${month}/${year}`;
   };
-
   const handleDescargarPDF = () => {
     const doc = new jsPDF();
     doc.text("Reporte de Control de Higiene Por Fecha", 10, 10);
-
     doc.autoTable({
       head: [["ID", "Fecha", "Turno", "Área", "Usuario", "Observaciones"]],
       body: reportData.map((row) => [
@@ -47,10 +43,8 @@ const ReportePorFecha = () => {
         row.observaciones,
       ]),
     });
-
     doc.save("reporte_higiene.pdf");
   };
-
   const handleDescargarExcel = () => {
     // Formatear los datos para Excel
     const formattedData = reportData.map((row) => ({
@@ -61,14 +55,11 @@ const ReportePorFecha = () => {
       Usuario: row.usuario,
       Observaciones: row.observaciones,
     }));
-
     const worksheet = XLSX.utils.json_to_sheet(formattedData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Reporte");
-
     XLSX.writeFile(workbook, "reporte_higiene.xlsx");
   };
-
   return (
     <div className="reportes-container">
       <h2>Generar Reporte Por Fecha</h2>
@@ -89,7 +80,6 @@ const ReportePorFecha = () => {
         />
       </div>
       <button onClick={handleGenerarReporte}>Generar Reporte</button>
-
       <h3>Resultados del Reporte</h3>
       <table>
         <thead>
@@ -116,7 +106,6 @@ const ReportePorFecha = () => {
           ))}
         </tbody>
       </table>
-
       {/* Botones para descargar el reporte */}
       <div className="reporte-descargas">
         <button onClick={handleDescargarPDF}>Descargar PDF</button>
@@ -125,5 +114,4 @@ const ReportePorFecha = () => {
     </div>
   );
 };
-
 export default ReportePorFecha;

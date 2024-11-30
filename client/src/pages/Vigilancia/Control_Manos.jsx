@@ -323,6 +323,9 @@ const ControlHigieneDeManos = () => {
           </li>
         </ul>
       </div>
+      <div className="form-actions">
+      <button type="submit">Guardar</button>
+    </div>
       </form>
     </div>
   );

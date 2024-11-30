@@ -7,9 +7,11 @@ import EstadoUsuario from './routes/EstadoUsuario.routes.js'
 import Salas from './routes/Salas.routes.js'
 import Especialidad from './routes/Especialidad.routes.js'
 import Objetos from './routes/Objetos.routes.js'
-import Pacientes from './routes/Pacientes.routes.js'
 import Roles from './routes/Rol.routes.js'
 import ControlHigiene from './routes/ControlHigiene.routes.js';
+import pacientesRoutes from "./routes/paciente.routes.js";
+
+// Agrega las rutas de pacientes
 
 import Permisos from './routes/Permisos.routes.js';
 import ControlLavado from './routes/ControlLavado.routes.js';
@@ -39,8 +41,9 @@ app.use('/api',Usuarios);
 app.use('/api',Salas);
 app.use('/api',Especialidad);
 app.use('/api',Objetos);
+app.use("/api/pacientes", pacientesRoutes);
 app.use('/api',EstadoUsuario);
-app.use('/api',Pacientes);
+
 app.use('/api',Roles);
 app.use('/api',Permisos);
 app.use('/api',ControlLavado);
@@ -51,5 +54,8 @@ app.use('/api',EstadoMonitoreo);
 app.use('/api',ControlHigiene);
 
 
-app.listen(3000);
-console.log('Servidor corriendo en el puerto 3000');
+// Inicio del servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
