@@ -71,46 +71,51 @@ function Paciente() {
   };
   const handleUpdate = async () => {
     const data = {
-      nombre,
-      edad,
-      genero,
-      habitacion,
-      visita,
-      diagnostico,
-      fecha_registro: fechaRegistro,
-      fecha_alta: fechaAlta,
-      sala,
-      infeccion,
-      procedimiento,
-      cantidad_dispositivos: dispositivos,
-      observaciones,
-      dispositivo_otro_hospital: dispositivoOtroHospital,
+        nombre,
+        edad,
+        genero,
+        habitacion,
+        visita,
+        diagnostico,
+        fecha_registro: fechaRegistro,
+        fecha_alta: fechaAlta,
+        dias_hospitalizados: diasHospitalizados,
+        sala,
+        infeccion,
+        procedimiento,
+        cantidad_dispositivos: dispositivos,
+        observaciones,
+        dispositivo_otro_hospital: dispositivoOtroHospital,
     };
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/pacientes/${editPacienteId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+        const response = await fetch(
+            `http://localhost:3000/api/pacientes/${editPacienteId}`, // ID en el URL
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data), // Sin el campo "id"
+            }
+        );
 
-      if (response.ok) {
-        setMensaje("Paciente actualizado correctamente");
-        obtenerPacientes();
-        setEditPacienteId(null);
-        resetForm();
-      } else {
-        setError("Error al actualizar el paciente");
-      }
+        if (response.ok) {
+            setMensaje("Paciente actualizado correctamente");
+            obtenerPacientes();
+            resetForm();
+            setEditPacienteId(null);
+        } else {
+            const errorResponse = await response.json();
+            console.error("Error en el servidor:", errorResponse);
+            setError("Error al actualizar el paciente");
+        }
     } catch (error) {
-      setError("Error al conectar con el servidor");
+        console.error("Error al conectar con el servidor:", error);
+        setError("Error al conectar con el servidor");
     }
-  };
+};
+
   const generatePDF = (paciente) => {
     const doc = new jsPDF();
 

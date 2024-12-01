@@ -5,20 +5,19 @@ import { useEffect, useState } from "react";
 import axios from "../../../api/axios";
 import { useAppContext } from "../../../context/AppContext";
 import { toast } from "sonner";
-const columnas = [
-  { id: "N", label: "N", minWidth: 100 },
-  { id: "DESCRIPCION", label: "Descripcion", minWidth: 100 },
-  { id: "TIPO_DISPOSITIVO", label: "TIPO DISPOSITIVO", minWidth: 100 }, // en id tiene que ir el nombre de la columna en la base de datos
-  { id: "Acciones", label: "Acciones", minWidth: 100 }, // este siempre lo dejamos
+const columnas = [ 
+  { id: "N", label: "N°", minWidth: 100 },
+  { id: "NOMBRE_GENERO", label: "Genero", minWidth: 100 },
+  { id: "Acciones", label: "Acciones", minWidth: 100 },
 ];
 
-const Dispositivos = () => {
+const Genero = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const {setRows,rows,user} = useAppContext();
 
   async function getData() {
     try {
-      const response = await axios.get("/getDispositivos");
+      const response = await axios.get("/getGenero");
       setRows(response.data);
   
     } catch (error) {
@@ -27,7 +26,7 @@ const Dispositivos = () => {
   }
 
   useEffect(() => {
-    document.title = "Dispositivos";
+    document.title = "Genero";
     getData();
   }, []);
 
@@ -40,9 +39,9 @@ const Dispositivos = () => {
       let tabla = rows.filter((data) => {
         return data.ID !== id;
       });
-      const resp =  await axios.delete(`/eliminarDispositivos/${id}`);
+      const resp =  await axios.delete(`/eliminarGenero/${id}`);
       setRows(tabla);
-      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Dispositivos`});
+      await axios.post('/insertBitacora', {Accion: `${user[0][0].NOMBRE} eliminó un Genero`});
       toast.success(resp.data);
     } catch (error) {
       toast.error(error.response.data);
@@ -51,8 +50,7 @@ const Dispositivos = () => {
 
   const filteredData = rows?.filter(
     (item) =>
-    item.DESCRIPCION?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.TIPO_DISPOSITIVO?.toLowerCase().includes(searchTerm.toLowerCase())
+      item.NOMBRE_GENERO?.toLowerCase().includes(searchTerm.toLowerCase()) 
   );
 
   return (
@@ -69,10 +67,10 @@ const Dispositivos = () => {
         permisoConsulta={true}
         permisoActualizar={true}
         permisoEliminar={true}
-        titulo={'Dispositivos'}
+        titulo={'Genero'}
       />
     </div>
   );
 };
 
-export default Dispositivos;
+export default Genero;

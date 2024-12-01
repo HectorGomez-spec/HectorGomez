@@ -7,7 +7,7 @@ import date from "date-and-time";
 export function GenerarPDF({ head, body, nombre }) {
   //arreglo con los id de las columnas ej: ["IdObjeto","Descripcion"]
   const id = Object.entries(head)
-    .filter((item) => item[1].id !== "#" && item[1].id !== "Acciones")
+    .filter((item) => item[1].id !== "N" && item[1].id !== "Acciones")
     .map((item) => item[1].id);
   //arreglo con los nombres (labels) de las columnas ej: ["Id Objeto","Descripcion"]
   const columns = Object.entries(head)

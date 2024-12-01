@@ -96,8 +96,8 @@ export const crearPaciente = async (req, res) => {
 
 // Actualizar un paciente
 export const actualizarPaciente = async (req, res) => {
+    const { id } = req.params; // El ID viene desde el parámetro de la URL
     const {
-        id,
         nombre,
         edad,
         genero,
@@ -115,6 +115,7 @@ export const actualizarPaciente = async (req, res) => {
         dispositivo_otro_hospital,
     } = req.body;
 
+    console.log("ID recibido para actualizar paciente:", id);
     console.log("Datos recibidos para actualizar paciente:", req.body);
 
     try {
@@ -138,14 +139,18 @@ export const actualizarPaciente = async (req, res) => {
                 cantidad_dispositivos,
                 observaciones || null,
                 dispositivo_otro_hospital || false,
-                id,
+                id, // El ID al final del array
             ]
         );
 
         console.log("Resultado de la actualización:", result);
+        if (result.affectedRows === 0) {
+            return res.status(404).json("Paciente no encontrado");
+        }
+
         return res.status(200).json("Paciente actualizado correctamente");
     } catch (error) {
-        console.log("Error al actualizar el paciente:", error);
+        console.error("Error al actualizar el paciente:", error);
         return res.status(500).json("Error al actualizar el paciente");
     }
 };

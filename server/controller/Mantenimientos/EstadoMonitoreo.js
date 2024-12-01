@@ -11,9 +11,9 @@ export const getEstadoMonitoreo = async (req, res) => {
 }
 
 export const crearEstadoMonitoreo = async (req, res) => {
-    const { Nueva, NOMBRE_ESTADO } = req.body; //se tiene que llamar igual que en el register del front
+    const { NOMBRE_ESTADO } = req.body; //se tiene que llamar igual que en el register del front
     try {
-        await pool.query('INSERT INTO estado_monitoreo (NOMBRE_ESTADO) VALUES (?)', [Nueva, NOMBRE_ESTADO]);
+        await pool.query('INSERT INTO estado_monitoreo (NOMBRE_ESTADO) VALUES (?)', [ NOMBRE_ESTADO]);
         return res.status(200).json('Estado Monitoreo creado correctamente');
     } catch (error) {
         console.log(error);
