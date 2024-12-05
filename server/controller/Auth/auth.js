@@ -70,7 +70,9 @@ export const verifyCode = async (req, res) => {
             if (decoded.payload.Id !== CODIGO) return res.status(401).json({ message: "Codigo incorrecto" });
             const token = await createAccessToken({ Id: user[0].ID }, '2h');
             res.cookie('token', token)
-            res.json([user]);
+            const permisos = await pool.query('select * from Permisos where Id_Rol = ?', [user[0].ID_ROL]);
+
+            res.json([user, permisos]);
         })
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -93,8 +95,8 @@ export const verifyToken = async (req, res) => {
         if (err) return res.status(401).json({ message: "No estas autorizado" });
         const [user] = await pool.query('select * from Usuario where Id = ?', [decoded.payload.Id]);
         if (user.length === 0) return res.status(400).json({ message: "Usuario no encontrado" });
-        // const [permisos] = await pool.query('select * from Permisos where IdRol = ?', [user[0].IdRol]);
-        res.json([user]);
+        const [permisos] = await pool.query('select * from Permisos where Id_Rol = ?', [user[0].ID_ROL]);
+        res.json([user, permisos]);
     })
 }
 

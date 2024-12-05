@@ -64,10 +64,10 @@ const Salas = () => {
         deleteRequest={deleteRequest}
         handleSearchChange={handleSearchChange}
         searchTerm={searchTerm}
-        modalBtnValue={'Nuevo'}
-        permisoConsulta={true}
-        permisoActualizar={true}
-        permisoEliminar={true}
+        modalBtnValue={user[1]?.some((permiso) => permiso.ID_OBJETO == 1 && permiso.INSERTAR == 1)? "Nuevo": null}
+        permisoConsulta={user[1]?.some((permiso) => permiso.ID_OBJETO == 1 && permiso.CONSULTAR == 1)}
+        permisoActualizar={user[1]?.some((permiso) => permiso.ID_OBJETO == 1 && permiso.ACTUALIZAR == 1)}
+        permisoEliminar={user[1]?.some((permiso) => permiso.ID_OBJETO == 1 && permiso.ELIMINAR == 1)}
         titulo = {'Salas'}
       />
     </div>

@@ -30,7 +30,6 @@ export function Formulario({ row, closeModal }) {
       try {
         const response = await axios.get("/getObjetos");
         setObjetos(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -39,8 +38,8 @@ export function Formulario({ row, closeModal }) {
       async function obtenerPermisos() {
         try {
           const response = await axios.get(`/getPermisosByRolId/${row.ID}`);
-          setObjetosDelRol(response.data.map((objeto) => objeto.IdObjeto));
-
+          console.log(response.data);
+          setObjetosDelRol(response.data.map((objeto) => objeto.ID_OBJETO));
           setPermisos(response.data);
         } catch (error) {
           console.log(error);
@@ -220,7 +219,7 @@ export function Formulario({ row, closeModal }) {
                         </thead>
                         <tbody>
                           {Objetos.map((objeto, index) => (
-                            <tr key={objeto.Id}>
+                            <tr key={objeto.ID}>
                               <td>{index + 1}</td>
                               <td
                                 onClick={(e) => {
@@ -235,13 +234,13 @@ export function Formulario({ row, closeModal }) {
                               >
                                 <Form.Check
                                   type="checkbox"
-                                  label={objeto.Objeto}
-                                  value={objeto.Id} // Aquí usamos IdObjeto como valor
+                                  label={objeto.OBJETO}
+                                  value={objeto.ID} // Aquí usamos IdObjeto como valor
                                   name="Objetos"
                                   {...register("Objetos")}
                                   defaultChecked={permisos?.some(
                                     (permiso) =>
-                                      permiso.IdObjeto === objeto.Id || false
+                                      permiso.ID_OBJETO == objeto.ID || false
                                   )} // Marcamos el checkbox si el IdObjeto está en los permisos
                                   onClick={(e) => e.stopPropagation()} // Evita que el evento click en el td se dispare desde el checkbox
                                   onChange={(e) => {
@@ -250,6 +249,7 @@ export function Formulario({ row, closeModal }) {
                                         objetosAgregados = objetosAgregados.filter((objeto) => objeto !== e.target.value);
                                       }
                                       if(objetosDelRol.includes(Number(e.target.value))) {
+                                        console.log('perro');
                                         objetosEliminados.push(e.target.value);
                                       }
                                     } else {// si el check está activado

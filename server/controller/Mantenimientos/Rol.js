@@ -59,7 +59,7 @@ export const deleteRol = async (req, res) => {
 
 export const getPermisosByRolId = async (req, res) => {
     const { id } = req.params;
-    const query = "SELECT * FROM Permisos WHERE IdRol = ?";
+    const query = "SELECT * FROM Permisos WHERE Id_Rol = ?";
     try {
         const result = await pool.query(query, [id]);
         res.json(result[0]);
@@ -71,19 +71,19 @@ export const getPermisosByRolId = async (req, res) => {
 export const updateRol = async (req, res) => {
     const connection = await pool.getConnection();
     const { id } = req.params;
-    const { Rol, Descripcion, objetosEliminados, objetosAgregados } = req.body;
-    const query = "UPDATE rol SET Rol = UPPER(?), Descripcion = UPPER(?) WHERE Id = ?";
-    const query2 = "DELETE FROM Permisos WHERE IdRol = ? and IdObjeto = ?";
-    const query3 = "INSERT INTO Permisos (IdRol, IdObjeto, PermisoInsercion,PermisoActualizar,PermisoEliminar,PermisoConsultar) VALUES (?, ?,1,1,1,1)";
-    const query4 = "SELECT * FROM Rol Where Rol = ? and Id <> ?";
+    const { NOMBRE_ROL, DESCRIPCION, objetosEliminados, objetosAgregados } = req.body;
+    const query = "UPDATE roles SET Nombre_Rol = UPPER(?), Descripcion = UPPER(?) WHERE Id = ?";
+    const query2 = "DELETE FROM Permisos WHERE Id_Rol = ? and Id_Objeto = ?";
+    const query3 = "INSERT INTO Permisos (Id_Rol, Id_Objeto, Insertar,Actualizar,Eliminar,Consultar) VALUES (?, ?,1,1,1,1)";
+    const query4 = "SELECT * FROM Roles Where Nombre_Rol = ? and Id <> ?";
 
     try {
-        const result = await connection.query(query4, [Rol, id]);
+        const result = await connection.query(query4, [NOMBRE_ROL, id]);
         if (result[0].length > 0) {
             return res.json({ IsValid: false, message: "El nombre del rol ya existe" });
         }
         await connection.beginTransaction();
-        await connection.query(query, [Rol, Descripcion, id]);
+        await connection.query(query, [NOMBRE_ROL, DESCRIPCION, id]);
         for (let objeto of objetosEliminados) {
             await connection.query(query2, [id, objeto]);
         }

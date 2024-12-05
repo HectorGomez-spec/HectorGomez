@@ -70,14 +70,16 @@ function Nav() {
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Seguridad</a>
               <ul>
+              {user[1].find((permiso) => permiso.ID_OBJETO === 1) && ( //este es un ejemplo, el numero va a ser el que vos asignes 
               <li><a href="/Usuarios">Usuarios</a></li>
+              )}
               <li><a href="Objetos">Objetos</a></li>
                 <li><a href="/Roles">Roles</a></li>
                 <li><a href="/Bitacora">Bitacora</a></li>
                 <li><a href="/Permisos">Permisos</a></li>
               </ul>
             </li>
-
+          {user[1].find((permiso) => permiso.ID_OBJETO === 1) && (
             <li className={styles.nav_ul_li}>
               <a href="#" className={styles.nav_ul_li_a}>Mantenimiento</a>
               <ul>
@@ -93,6 +95,7 @@ function Nav() {
                 <li><a href="/ControlLavado">Control Lavado</a></li>
               </ul>
             </li>
+          )}
 
           </ul>
         </nav>
