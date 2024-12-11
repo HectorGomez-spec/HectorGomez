@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from '../../styles/Salas.module.css'; // Importa los estilos desde el archivo CSS módulo
-import img1 from '../../img/hospital.png'
-import img2 from '../../img/hospital.png'
-import img3 from '../../img/cardiology.png'
-import img4 from '../../img/emergencia.png'
-import img5 from '../../img/endoscopia.png'
-import img6 from '../../img/maternidad.png'
-import img7 from '../../img/oncologia.png'
-import img8 from '../../img/mesa-quirurgica.png'
+import img1 from '../../Img/hospital.png'
+import img2 from '../../Img/hospital.png'
+import img3 from '../../Img/cardiology.png'
+import img4 from '../../Img/emergencia.png'
+import img5 from '../../Img/endoscopia.png'
+import img6 from '../../Img/maternidad.png'
+import img7 from '../../Img/oncologia.png'
+import img8 from '../../Img/mesa-quirurgica.png'
 
 const Salas = () => {
     
