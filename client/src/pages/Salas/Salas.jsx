@@ -9,8 +9,6 @@ import img6 from '../../img/maternidad.png'
 import img7 from '../../img/oncologia.png'
 import img8 from '../../img/mesa-quirurgica.png'
 
-
-
 const Salas = () => {
     
     return (
